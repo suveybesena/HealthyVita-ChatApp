@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/guidanceFragment">
+
+    <fragment
+        android:id="@+id/questionsFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.questions.QuestionsFragment"
+        android:label="fragment_questions"
+        tools:layout="@layout/fragment_questions" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.messages.MessagesFragment"
+        android:label="fragment_messages"
+        tools:layout="@layout/fragment_messages" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_teachersFragment"
+            app:destination="@id/teachersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teacherRegisterFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.register.teacher.TeacherRegisterFragment"
+        android:label="fragment_teacher_register"
+        tools:layout="@layout/fragment_teacher_register" >
+        <action
+            android:id="@+id/action_teacherRegisterFragment_to_teachersFragment"
+            app:destination="@id/teachersFragment" />
+        <action
+            android:id="@+id/action_teacherRegisterFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/guidanceFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.guidance.GuidanceFragment"
+        android:label="fragment_guidance"
+        tools:layout="@layout/fragment_guidance" >
+        <action
+            android:id="@+id/action_guidanceFragment_to_teacherRegisterFragment"
+            app:destination="@id/teacherRegisterFragment" />
+        <action
+            android:id="@+id/action_guidanceFragment_to_studentRegisterFragment"
+            app:destination="@id/studentRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentRegisterFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.register.student.StudentRegisterFragment"
+        android:label="fragment_student_register"
+        tools:layout="@layout/fragment_student_register" >
+        <action
+            android:id="@+id/action_studentRegisterFragment_to_teachersFragment"
+            app:destination="@id/teachersFragment" />
+        <action
+            android:id="@+id/action_studentRegisterFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teachersFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.teachers.TeachersFragment"
+        android:label="fragment_teachers"
+        tools:layout="@layout/fragment_teachers" />
+
+</navigation>

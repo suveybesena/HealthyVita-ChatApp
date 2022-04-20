@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">SchoolChattingApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu">Menu</string>
+    <string name="profile">Profile</string>
+    <string name="messages">Messages</string>
+    <string name="field">Alanınız</string>
+
+
+    <string-array name="Fields">
+        <item>Matematik</item>
+        <item>Fizik</item>
+        <item>Kimya</item>
+        <item>Biyoloji</item>
+        <item>Geometri</item>
+    </string-array>
+</resources>

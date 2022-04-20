@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "334919295860",
+    "project_id": "schoolchattingapp-15ff3",
+    "storage_bucket": "schoolchattingapp-15ff3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334919295860:android:e18142c8bc5a3c0b560221",
+        "android_client_info": {
+          "package_name": "com.suveybesena.schoolchattingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334919295860-ee9uh5s1fingbb0iclu2dug5gs3r24sg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcLbKO8QjKOV2pRPf0_tOdUvCb_i_-MZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334919295860-ee9uh5s1fingbb0iclu2dug5gs3r24sg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

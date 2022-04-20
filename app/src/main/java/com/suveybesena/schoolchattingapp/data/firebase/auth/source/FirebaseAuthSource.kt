@@ -1,0 +1,11 @@
+package com.suveybesena.schoolchattingapp.data.firebase.auth.source
+
+import com.google.firebase.auth.FirebaseUser
+import com.suveybesena.schoolchattingapp.data.firebase.auth.model.RegisterModel
+import com.suveybesena.schoolchattingapp.data.firebase.auth.model.LoginModel
+
+interface FirebaseAuthSource {
+    suspend fun signUpWithEmail(emailAuthModel: RegisterModel): FirebaseUser?
+    suspend fun getCurrentUserId(): String?
+    suspend fun signIn ( signInInfo : LoginModel) :FirebaseUser?
+}
