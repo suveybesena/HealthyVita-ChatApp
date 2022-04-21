@@ -28,7 +28,6 @@ class FirebaseAuthSourceProvider @Inject constructor(val firebaseAuth: FirebaseA
 
     override suspend fun getCurrentUserId(): String? {
         try {
-
             return firebaseAuth.currentUser?.uid
         } catch (e: Exception) {
             throw Exception(e.localizedMessage)

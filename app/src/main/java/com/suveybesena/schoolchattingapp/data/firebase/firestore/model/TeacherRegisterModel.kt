@@ -2,7 +2,7 @@ package com.suveybesena.schoolchattingapp.data.firebase.firestore.model
 
 import android.net.Uri
 
-data class Teacher(
+data class TeacherRegisterModel(
     val mail: String,
     val profileImage: Uri,
     val password: String,

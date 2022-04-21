@@ -4,21 +4,31 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1785" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/drawable/bg_receive.xml" value="0.1765" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/drawable/bg_sent.xml" value="0.1765" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/drawable/ic_help_outline_black_24dp.xml" value="0.1785" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/drawable/ic_home.xml" value="0.1785" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1785" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/drawable/ic_messages.xml" value="0.1785" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/drawable/ic_profile.xml" value="0.1785" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/drawable/ic_qa.xml" value="0.1765" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/drawable/ic_search.xml" value="0.1785" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/drawable/ic_sent.xml" value="0.1785" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/bg_receive_message.xml" value="1.5928571428571427" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/bg_sent_message.xml" value="0.275" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/fragment_chat.xml" value="0.264" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/fragment_guidance.xml" value="0.275" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/fragment_login.xml" value="0.275" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/fragment_main.xml" value="0.275" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/fragment_messages.xml" value="0.275" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/fragment_student_register.xml" value="0.2" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/fragment_teacher_register.xml" value="0.4" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/fragment_teachers.xml" value="0.275" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/item_dropdown.xml" value="0.275" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/item_receive_message.xml" value="0.2" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/item_sent_message.xml" value="0.264" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/item_teacher.xml" value="0.264" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/nav_bottom_bar.xml" value="0.275" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/menu/item_bottom.xml" value="0.1" />
       </map>

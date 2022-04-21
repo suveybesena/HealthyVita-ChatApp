@@ -7,6 +7,7 @@ import com.suveybesena.schoolchattingapp.data.firebase.auth.model.RegisterModel
 import com.suveybesena.schoolchattingapp.data.firebase.auth.source.FirebaseAuthSourceProvider
 import com.suveybesena.schoolchattingapp.data.firebase.firestore.source.FirebaseFirestoreSourceProvider
 import com.suveybesena.schoolchattingapp.data.firebase.storage.source.FirebaseStorageSourceProvider
+import com.suveybesena.schoolchattingapp.presentation.chat.MessageModel
 import javax.inject.Inject
 
 class Repository @Inject constructor(
@@ -14,7 +15,8 @@ class Repository @Inject constructor(
     private val firebaseFirestoreSourceProvider: FirebaseFirestoreSourceProvider,
     private val firebaseStorageProvider: FirebaseStorageSourceProvider
 ) {
-    suspend fun signUp(registerModel: RegisterModel) = firebaseAuthSourceProvider.signUpWithEmail(registerModel)
+    suspend fun signUp(registerModel: RegisterModel) =
+        firebaseAuthSourceProvider.signUpWithEmail(registerModel)
 
     suspend fun getCurrentUserId() = firebaseAuthSourceProvider.getCurrentUserId()
 
@@ -26,10 +28,11 @@ class Repository @Inject constructor(
 
 
     suspend fun saveInfoToFirestoreForTeachers(
-        currentUserId: String, imageUrl: String, userName: String, field : String
+        userName: String, currentUserId: String, imageUrl: String, userMail: String, field: String
     ) =
         firebaseFirestoreSourceProvider.addTeacherInfoToFirebase(
-            currentUserId, imageUrl, userName, field
+            userName,
+            currentUserId, imageUrl, userMail, field
         )
 
     suspend fun saveInfoToFirestoreForStudents(
@@ -40,4 +43,13 @@ class Repository @Inject constructor(
         )
 
     suspend fun signIn(signingInfo: LoginModel) = firebaseAuthSourceProvider.signIn(signingInfo)
+
+    suspend fun fetchTeacherData() =
+        firebaseFirestoreSourceProvider.fetchTeacherInfo()
+
+    suspend fun fetchMessages(receiverId: String) =
+        firebaseFirestoreSourceProvider.fetchMessagesFromFirebase(receiverId)
+
+    suspend fun saveMessageToFirestore(messageModel: MessageModel, currentUserId: String) =
+        firebaseFirestoreSourceProvider.addMessagesToFirebase(messageModel, currentUserId)
 }
