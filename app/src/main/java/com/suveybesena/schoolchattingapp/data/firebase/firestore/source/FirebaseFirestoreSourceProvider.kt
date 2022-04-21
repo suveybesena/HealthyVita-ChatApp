@@ -79,7 +79,7 @@ class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFi
     override suspend fun fetchMessagesFromFirebase(receiverId: String): List<DocumentSnapshot> {
         try {
             return firebaseFirestore.collection("Messages").whereEqualTo("receiver", receiverId)
-                .orderBy("time", Query.Direction.DESCENDING).get().await().documents
+                .orderBy("time").get().await().documents
         } catch (e: Exception) {
             throw Exception(e.localizedMessage)
         }
