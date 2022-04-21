@@ -18,7 +18,7 @@ class CreateStudentUseCase @Inject constructor(val repository: Repository){
                 repository.getCurrentUserId()?.let {id->
                     repository.saveMediaToStorageForStudents(registerModel.userPhoto, id)?.let { image->
                         repository.saveInfoToFirestoreForStudents(
-                            id,image,registerModel.email
+                            id,image,registerModel.userName
                         )
                     }
                 }
