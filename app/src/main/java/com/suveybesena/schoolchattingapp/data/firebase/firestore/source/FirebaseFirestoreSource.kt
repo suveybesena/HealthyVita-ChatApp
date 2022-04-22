@@ -2,6 +2,7 @@ package com.suveybesena.schoolchattingapp.data.firebase.firestore.source
 
 import com.google.firebase.firestore.DocumentSnapshot
 import com.suveybesena.schoolchattingapp.presentation.chat.MessageModel
+import com.suveybesena.schoolchattingapp.presentation.forum.ForumModel
 
 interface FirebaseFirestoreSource {
     suspend fun addTeacherInfoToFirebase(
@@ -16,7 +17,16 @@ interface FirebaseFirestoreSource {
 
     suspend fun fetchTeacherInfo(): List<DocumentSnapshot>
 
-    suspend fun addMessagesToFirebase(messages: MessageModel, currentUserId: String)
+    suspend fun addMessagesToFirebase(messages: MessageModel)
 
-    suspend fun fetchMessagesFromFirebase(receiverId : String): List<DocumentSnapshot>
+    suspend fun fetchMessagesFromFirebase(
+        currentUserId: String,
+        receiverId: String
+    ): List<DocumentSnapshot>
+
+    suspend fun addForumToFirebase(forum: ForumModel)
+
+    suspend fun fetchForumMessages(): List<DocumentSnapshot>
+
+
 }

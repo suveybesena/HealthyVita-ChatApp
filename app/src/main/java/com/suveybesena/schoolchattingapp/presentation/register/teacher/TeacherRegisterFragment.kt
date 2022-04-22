@@ -68,7 +68,7 @@ class TeacherRegisterFragment : Fragment() {
                     }
                 }
                 state.error.let { error ->
-                    Snackbar.make(requireView(), "giriş yapılamadı", Snackbar.LENGTH_LONG).show()
+                   // Snackbar.make(requireView(), "giriş yapılamadı", Snackbar.LENGTH_LONG).show()
                 }
             }
         }

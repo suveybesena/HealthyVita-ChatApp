@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.login.LoginFragment">
-
-
 
 
     <TextView
@@ -23,10 +20,9 @@
 
     <EditText
         android:id="@+id/etEmail"
-        style="@style/email_background"
+        style="@style/email"
         android:layout_marginTop="5dp"
-        android:foregroundGravity="center"
-        android:gravity="center"
+        android:hint="Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
@@ -43,35 +39,23 @@
 
     <EditText
         android:id="@+id/etPassword"
-        style="@style/email_background"
-        android:gravity="center"
-        android:foregroundGravity="center"
+        style="@style/password"
         android:layout_marginTop="5dp"
-        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
 
-    <TextView
+    <Button
         android:id="@+id/bvSignIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
         android:layout_marginBottom="80dp"
-        android:background="@drawable/ic_signinbackground"
-        android:backgroundTint="#E96E41"
-        android:gravity="center"
+        style="@style/button"
         android:text="Giriş Yap"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.39"/>
+        app:layout_constraintVertical_bias="0.39" />
 
     <TextView
         android:id="@+id/tvSignIn"
@@ -95,10 +79,10 @@
         android:text="Kayıt ol."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.686"
+        app:layout_constraintHorizontal_bias="0.677"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bvSignIn"
-        app:layout_constraintVertical_bias="0.513" />
+        app:layout_constraintVertical_bias="0.459" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

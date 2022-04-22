@@ -5,8 +5,8 @@ import java.sql.Timestamp
 
 data class MessageModel(
     val message: String,
-    var senderId: String?,
+    var senderId: String,
     var imageUrl: String,
-    var timestamp: com.google.firebase.Timestamp ,
-    val receiverId: String
+    var time: Long,
+    val receiverId: String,
 )

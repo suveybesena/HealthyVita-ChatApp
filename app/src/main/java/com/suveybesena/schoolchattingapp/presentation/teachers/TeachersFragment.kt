@@ -68,6 +68,10 @@ class TeachersFragment : Fragment() {
         }
     }
     private fun initListeners() {
+        binding.ivBack.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            findNavController().navigate(R.id.action_teachersFragment_to_teacherRegisterFragment)
+        }
 
     }
 }

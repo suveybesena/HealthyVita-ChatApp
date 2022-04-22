@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.SchoolChattingApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimary">#445563</item>
         <item name="colorPrimaryVariant">@color/pb_light</item>
         <item name="colorOnPrimary">@color/pb_dark</item>
         <!-- Secondary brand color. -->

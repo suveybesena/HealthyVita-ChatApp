@@ -61,31 +61,23 @@
 
     <EditText
         android:id="@+id/etEmail"
-        style="@style/email_background"
+        style="@style/email"
         android:layout_marginTop="5dp"
-        android:foregroundGravity="center"
-        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
     <EditText
         android:id="@+id/etPassword"
-        style="@style/email_background"
-        android:gravity="center"
-        android:foregroundGravity="center"
+        style="@style/password"
         android:layout_marginTop="5dp"
-        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
 
     <EditText
         android:id="@+id/etPasswordConfirm"
-        style="@style/email_background"
-        android:foregroundGravity="center"
-        android:gravity="center"
-        android:inputType="textPassword"
+        style="@style/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPasswordConfirm" />
@@ -94,7 +86,9 @@
         android:id="@+id/etUserName"
         style="@style/email_background"
         android:foregroundGravity="center"
-        android:gravity="center"
+        android:paddingLeft="25dp"
+        android:hint="Kullanıcı Adı"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
@@ -129,28 +123,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPasswordConfirm" />
 
-    <TextView
+    <Button
         android:id="@+id/bvSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/ic_signinbackground"
-        android:backgroundTint="#E96E41"
-        android:gravity="center"
         android:text="Kayıt Ol"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUserName"
-        app:layout_constraintVertical_bias="0.39">
+        app:layout_constraintVertical_bias="0.39"
+        style="@style/button">
 
-    </TextView>
+    </Button>
 
     <ImageView
         android:id="@+id/ivVisibility"

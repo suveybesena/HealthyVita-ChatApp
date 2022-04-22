@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.suveybesena.schoolchattingapp.R
 import com.suveybesena.schoolchattingapp.databinding.FragmentGuidanceBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,7 +28,7 @@ class GuidanceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        FirebaseAuth.getInstance().signOut()
         initListeners()
     }
 
@@ -41,5 +42,4 @@ class GuidanceFragment : Fragment() {
            }
        }
     }
-
 }

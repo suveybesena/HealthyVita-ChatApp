@@ -20,25 +20,25 @@ class ChatAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder?>() {
         override fun areItemsTheSame(oldItem: MessageModel, newItem: MessageModel): Boolean {
             return oldItem == newItem
         }
+
         override fun areContentsTheSame(oldItem: MessageModel, newItem: MessageModel): Boolean {
             return oldItem == newItem
         }
     }
+
     val differ = AsyncListDiffer(this, differCallBack)
 
     inner class SentMessageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var binding: ItemSentMessageBinding = ItemSentMessageBinding.bind(itemView)
     }
+
     inner class ReceiveMessageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var binding: ItemReceiveMessageBinding = ItemReceiveMessageBinding.bind(itemView)
     }
 
-
-
     override fun getItemViewType(position: Int): Int {
         val chats = differ.currentList[position]
         return if (FirebaseAuth.getInstance().currentUser?.uid == chats.senderId) {
-
             ITEM_SENT
         } else {
             ITEM_RECEIVE

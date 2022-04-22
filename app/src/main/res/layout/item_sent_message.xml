@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="5dp"
+    android:paddingRight="10dp"
+    android:layout_margin="7dp"
     android:layout_gravity="right"
     android:gravity="right">
 
@@ -14,7 +15,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_sent"
         android:orientation="vertical"
-        android:padding="15dp"
+        android:padding="10dp"
         tools:layout_editor_absoluteX="4dp"
         tools:layout_editor_absoluteY="0dp">
 
@@ -24,7 +25,7 @@
             android:layout_height="wrap_content"
             android:text="Selam nasılsın?"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
     </LinearLayout>
 
     <ImageView

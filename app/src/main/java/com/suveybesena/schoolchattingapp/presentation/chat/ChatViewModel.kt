@@ -22,23 +22,23 @@ class ChatViewModel @Inject constructor(
     fun handleEvent(event: ChatEvent) {
         when (event) {
             is ChatEvent.AddMessageToFirebase -> {
-                event.currentUserId?.let { addMessages(event.messageModel, it) }
+                 addMessages(event.messageModel)
             }
-            is ChatEvent.FetchMessages -> {
-                fetchMessages(event.receiverId)
+            is ChatEvent.FetchMessage-> {
+                fetchMessages(event.currentUserId, event.receiverId)
             }
         }
     }
 
-    private fun addMessages(messages: MessageModel, currentUserId: String) {
+    private fun addMessages(messages: MessageModel) {
         viewModelScope.launch {
-            addMessagesUseCase.invoke(messages, currentUserId).collect {}
+            addMessagesUseCase.invoke(messages).collect {}
         }
     }
 
-    private fun fetchMessages(receiverId: String) {
+    private fun fetchMessages(currentUserId: String, receiverId: String) {
         viewModelScope.launch {
-            fetchMessageUseCase.invoke(receiverId).collect { resultState ->
+            fetchMessageUseCase.invoke(currentUserId, receiverId).collect { resultState ->
                 when (resultState) {
                     is Resource.Success -> {
                         uiState.update { state ->

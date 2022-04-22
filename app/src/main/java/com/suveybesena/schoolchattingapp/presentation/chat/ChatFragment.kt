@@ -24,10 +24,6 @@ class ChatFragment : Fragment() {
     private val viewModel: ChatViewModel by viewModels()
     private lateinit var chatAdapter: ChatAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,27 +48,30 @@ class ChatFragment : Fragment() {
     }
 
     private fun saveMessage() {
-        val message = binding.etMessage.text.toString()
-        val date = com.google.firebase.Timestamp.now()
-        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
         val selectedUserInfo = args.teacherInfo
+        val message = binding.etMessage.text.toString()
+        val date = System.currentTimeMillis()
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
 
-        val messageModel =
-            MessageModel(
-                message,
-                currentUserId,
-                "", date, selectedUserInfo.id
-            )
-
-        viewModel.handleEvent(ChatEvent.AddMessageToFirebase(messageModel, currentUserId))
-
-        lifecycleScope.launch {
-            viewModel._uiState.collect { state ->
-                state.messageList.let { list ->
-                    chatAdapter.differ.submitList(list)
+        if (message != "") {
+            val messageModel =
+                currentUserId?.let { currentUser ->
+                    MessageModel(message, currentUser, "", date, selectedUserInfo.id)
                 }
+            messageModel?.let { messageModel ->
+                ChatEvent.AddMessageToFirebase(messageModel)
             }
+                ?.let { event ->
+                    viewModel.handleEvent(event)
+                }
+            currentUserId?.let { currenUser ->
+                ChatEvent.FetchMessage(currenUser, selectedUserInfo.id)
+            }
+                ?.let { event ->
+                    viewModel.handleEvent(event)
+                }
         }
+        binding.etMessage.setText("")
     }
 
     private fun setupRecyclerView() {
@@ -84,10 +83,28 @@ class ChatFragment : Fragment() {
 
     private fun observeData() {
         val selectedUserInfo = args.teacherInfo
-        viewModel.handleEvent(ChatEvent.FetchMessages(selectedUserInfo.id))
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
         binding.apply {
             ivProfile.downloadImage(selectedUserInfo.image)
             tvTeacherName.text = selectedUserInfo.name
+        }
+
+        currentUserId?.let { ChatEvent.FetchMessage(it, selectedUserInfo.id) }
+            ?.let { viewModel.handleEvent(it) }
+
+        lifecycleScope.launch {
+            viewModel._uiState.collect { state ->
+                state.messageList.let { list ->
+                    if (list != null) {
+                        list.forEach { messageInfo ->
+                            if (messageInfo.receiverId == selectedUserInfo.id) {
+                                chatAdapter.differ.submitList(list)
+                                println(list)
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

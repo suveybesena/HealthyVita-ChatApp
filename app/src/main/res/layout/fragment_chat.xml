@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.chat.ChatFragment">
+    tools:context=".presentation.chat.ChatFragment"
+    android:background="#FF5A6C78"
+    >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvChat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/ic_recyclerbg"
         android:layout_marginBottom="70dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,16 +37,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        android:textColor="@color/white"
         android:layout_marginBottom="12dp"
         android:fontFamily="@font/alata"
         android:text="Öğretmen"
+        android:textColorHint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/rvChat"
         app:layout_constraintEnd_toStartOf="@+id/ivProfile"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etMessage"
-        style="@style/email_background"
+        style="@style/white_background"
         android:layout_width="340dp"
         android:layout_height="49dp"
         android:foregroundGravity="center"
@@ -60,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:backgroundTint="@color/white"
         android:layout_marginEnd="16dp"
         android:src="@drawable/ic_sent"
         app:fabSize="mini"

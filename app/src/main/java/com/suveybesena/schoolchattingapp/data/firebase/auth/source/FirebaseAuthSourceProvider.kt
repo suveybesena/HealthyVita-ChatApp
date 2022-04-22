@@ -36,12 +36,11 @@ class FirebaseAuthSourceProvider @Inject constructor(val firebaseAuth: FirebaseA
 
     override suspend fun signIn(signInInfo: LoginModel): FirebaseUser? {
         return try {
-            firebaseAuth.signInWithEmailAndPassword(signInInfo.email, signInInfo.password).await()
+            firebaseAuth.signInWithEmailAndPassword(signInInfo.email, signInInfo.password)
+                .await()
             firebaseAuth.currentUser
         } catch (e: Exception) {
             throw Exception(e.localizedMessage)
         }
     }
-
-
 }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.suveybesena.schoolchattingapp.R
 import com.suveybesena.schoolchattingapp.data.firebase.auth.model.LoginModel
 import com.suveybesena.schoolchattingapp.databinding.FragmentLoginBinding
@@ -39,10 +40,20 @@ class LoginFragment : Fragment() {
 
     private fun observeData() {
         lifecycleScope.launch {
-            viewModel._uiState.collect { state->
-                state.loggedIn.let { loggedIn->
-                    if (loggedIn == true){
-                        goTeachersFragment()
+            viewModel._uiState.collect { state ->
+                state.loggedIn.let { loggedIn ->
+                    if (binding.etEmail.text.toString() != "") {
+                        if (binding.etPassword.text.toString() != "")
+                            if (loggedIn == true) {
+                                goTeachersFragment()
+                            } else {
+                                Snackbar.make(
+                                    requireView(),
+                                    "Email ve şifre giriniz.",
+                                    Snackbar.LENGTH_LONG
+                                )
+                            }
+
                     }
 
                 }
@@ -51,7 +62,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun goTeachersFragment() {
-      findNavController().navigate(R.id.action_loginFragment_to_teachersFragment)
+        findNavController().navigate(R.id.action_loginFragment_to_teachersFragment)
     }
 
     private fun initListeners() {
@@ -65,8 +76,5 @@ class LoginFragment : Fragment() {
             val loginModel = LoginModel(etEmail.text.toString(), etPassword.text.toString())
             viewModel.handlEvent(LoginEvent.Login(loginModel))
         }
-
     }
-
-
 }

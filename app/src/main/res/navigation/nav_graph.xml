@@ -73,6 +73,12 @@
         <action
             android:id="@+id/action_teachersFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_teachersFragment_to_studentRegisterFragment"
+            app:destination="@id/studentRegisterFragment" />
+        <action
+            android:id="@+id/action_teachersFragment_to_teacherRegisterFragment"
+            app:destination="@id/teacherRegisterFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"

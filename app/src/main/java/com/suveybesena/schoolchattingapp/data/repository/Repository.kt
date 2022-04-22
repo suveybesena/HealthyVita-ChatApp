@@ -8,6 +8,7 @@ import com.suveybesena.schoolchattingapp.data.firebase.auth.source.FirebaseAuthS
 import com.suveybesena.schoolchattingapp.data.firebase.firestore.source.FirebaseFirestoreSourceProvider
 import com.suveybesena.schoolchattingapp.data.firebase.storage.source.FirebaseStorageSourceProvider
 import com.suveybesena.schoolchattingapp.presentation.chat.MessageModel
+import com.suveybesena.schoolchattingapp.presentation.forum.ForumModel
 import javax.inject.Inject
 
 class Repository @Inject constructor(
@@ -47,9 +48,16 @@ class Repository @Inject constructor(
     suspend fun fetchTeacherData() =
         firebaseFirestoreSourceProvider.fetchTeacherInfo()
 
-    suspend fun fetchMessages(receiverId: String) =
-        firebaseFirestoreSourceProvider.fetchMessagesFromFirebase(receiverId)
+    suspend fun fetchMessages(currentUserId: String, receiverId: String) =
+        firebaseFirestoreSourceProvider.fetchMessagesFromFirebase(currentUserId, receiverId)
 
-    suspend fun saveMessageToFirestore(messageModel: MessageModel, currentUserId: String) =
-        firebaseFirestoreSourceProvider.addMessagesToFirebase(messageModel, currentUserId)
+    suspend fun saveMessageToFirestore(messageModel: MessageModel) =
+        firebaseFirestoreSourceProvider.addMessagesToFirebase(messageModel)
+
+    suspend fun saveForumMessagesToFirebase(forumModel: ForumModel) {
+        firebaseFirestoreSourceProvider.addForumToFirebase(forumModel)
+    }
+
+    suspend fun fetchForumMessageFromFirebase() =
+        firebaseFirestoreSourceProvider.fetchForumMessages()
 }
