@@ -31,10 +31,10 @@
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/fragment_teacher_register.xml" value="0.264" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/fragment_teachers.xml" value="0.536" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/item_dropdown.xml" value="0.275" />
-        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/item_forum.xml" value="0.264" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/item_forum.xml" value="0.25" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/item_receive_message.xml" value="0.16" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/item_sent_message.xml" value="0.264" />
-        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/item_teacher.xml" value="0.4" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/item_teacher.xml" value="0.2" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/layout/nav_bottom_bar.xml" value="0.275" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/SchoolChattingApp/app/src/main/res/menu/item_bottom.xml" value="0.1" />
       </map>
@@ -45,5 +45,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.72" />
+      </ProjectState>
+    </option>
   </component>
 </project>

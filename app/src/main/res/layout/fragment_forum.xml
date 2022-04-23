@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#445563"
     tools:context=".presentation.forum.ForumFragment">
 
     <ImageView
@@ -17,11 +18,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivUser"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="24dp"
         android:elevation="10dp"
         android:src="@drawable/ic_profileicon"
@@ -32,26 +33,18 @@
         android:id="@+id/tvCurrentUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="70dp"
         android:elevation="10dp"
         android:text="Current User"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="25dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#192F42"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="70dp"
-        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="227dp"
         tools:layout_editor_absoluteY="20dp" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/forumbg"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="2dp" />
 
     <EditText
         android:id="@+id/etForum"
@@ -60,24 +53,39 @@
         android:background="@drawable/ic_whitebg"
         android:hint="Yeni forum başlat.."
         android:paddingLeft="25dp"
-        android:textColor="@color/white"
+        android:textColor="#878787"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/rvForum"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@id/rvForum"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvForum"
         android:layout_width="match_parent"
-        android:layout_height="586dp"
+        android:layout_height="640dp"
         android:background="@drawable/ic_recyclerbg"
         android:padding="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/bvSent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_sent"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@+id/etForum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvForum"
+        app:layout_constraintVertical_bias="0.41" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

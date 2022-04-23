@@ -5,13 +5,18 @@
     <item
         android:id="@+id/teachersFragment"
         android:icon="@drawable/ic_home"
-        android:title="@string/messages" />
+        android:title="@string/menu" />
     <item
     android:id="@+id/messagesFragment"
     android:icon="@drawable/ic_messages"
-    android:title="@string/menu" />
+    android:title="@string/messages" />
     <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"
         android:title="@string/profile" />
+
+    <item
+        android:id="@+id/forumFragment"
+        android:icon="@drawable/ic_qa"
+        android:title="Forum" />
 </menu>

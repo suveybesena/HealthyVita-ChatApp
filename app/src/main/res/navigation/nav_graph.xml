@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_guidanceFragment_to_studentRegisterFragment"
             app:destination="@id/studentRegisterFragment" />
+        <action
+            android:id="@+id/action_guidanceFragment_to_teachersFragment"
+            app:destination="@id/teachersFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentRegisterFragment"
@@ -89,5 +92,10 @@
             android:name="teacherInfo"
             app:argType="com.suveybesena.schoolchattingapp.presentation.teachers.TeacherFeedModel" />
     </fragment>
+    <fragment
+        android:id="@+id/forumFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.forum.ForumFragment"
+        android:label="fragment_forum"
+        tools:layout="@layout/fragment_forum" />
 
 </navigation>
