@@ -1,5 +1,6 @@
 package com.suveybesena.schoolchattingapp.data.firebase.firestore.source
 
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
 import com.suveybesena.schoolchattingapp.presentation.chat.MessageModel
 import com.suveybesena.schoolchattingapp.presentation.forum.ForumModel
@@ -27,6 +28,8 @@ interface FirebaseFirestoreSource {
     suspend fun addForumToFirebase(forum: ForumModel)
 
     suspend fun fetchForumMessages(): List<DocumentSnapshot>
+
+    suspend fun fetchCurrentStudentInfo (currentUserId: String)  :List<DocumentSnapshot>
 
 
 }

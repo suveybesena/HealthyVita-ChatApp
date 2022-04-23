@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor( val loginUseCase: LoginUseCase):ViewModel() {
+class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase):ViewModel() {
 
     private val uiState = MutableStateFlow(LoginState())
     val _uiState : StateFlow<LoginState> = uiState.asStateFlow()
@@ -21,6 +21,7 @@ class LoginViewModel @Inject constructor( val loginUseCase: LoginUseCase):ViewMo
             is LoginEvent.Login ->{
                 event.loginInfo?.let { signInWithEmail(it) }
             }
+
         }
     }
 

@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.suveybesena.schoolchattingapp.common.downloadImage
 import com.suveybesena.schoolchattingapp.databinding.ItemTeacherBinding
 
-class TeachersAdapter (val questionClick : OnItemQuestionClick) : RecyclerView.Adapter<TeachersAdapter.TeacherVH>() {
+class TeachersAdapter (private val questionClick : OnItemQuestionClick) : RecyclerView.Adapter<TeachersAdapter.TeacherVH>() {
     class TeacherVH(val binding: ItemTeacherBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val differCallBack = object : DiffUtil.ItemCallback<TeacherFeedModel>() {

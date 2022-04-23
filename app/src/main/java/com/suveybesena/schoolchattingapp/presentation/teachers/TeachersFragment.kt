@@ -36,13 +36,14 @@ class TeachersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        println("bennnn geldimmm  ${FirebaseAuth.getInstance().currentUser?.uid}")
         setupRecyclerView()
         initListeners()
         observeData()
     }
 
     private fun setupRecyclerView() {
-        teachersAdapter = TeachersAdapter(object : OnItemQuestionClick{
+        teachersAdapter = TeachersAdapter(object : OnItemQuestionClick {
             override fun onTeacherItemClick(teacherInfo: TeacherFeedModel) {
                 goChatFragment(teacherInfo)
             }
@@ -52,11 +53,12 @@ class TeachersFragment : Fragment() {
         }
     }
 
-    private fun goChatFragment(teacherInfo : TeacherFeedModel) {
+    private fun goChatFragment(teacherInfo: TeacherFeedModel) {
         val bundle = Bundle()
-         bundle.putSerializable("teacherInfo",teacherInfo)
-        findNavController().navigate(R.id.action_teachersFragment_to_chatFragment,bundle)
+        bundle.putSerializable("teacherInfo", teacherInfo)
+        findNavController().navigate(R.id.action_teachersFragment_to_chatFragment, bundle)
     }
+
     private fun observeData() {
         viewModel.handleEvent(TeachersFeedEvent.FetchTeachersData)
         lifecycleScope.launch {
@@ -67,6 +69,7 @@ class TeachersFragment : Fragment() {
             }
         }
     }
+
     private fun initListeners() {
         binding.ivBack.setOnClickListener {
             FirebaseAuth.getInstance().signOut()

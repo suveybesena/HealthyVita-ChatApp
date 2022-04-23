@@ -26,7 +26,10 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.teachersFragment, R.id.messagesFragment, R.id.profileFragment
+                R.id.teachersFragment,
+                R.id.forumFragment,
+                R.id.messagesFragment,
+                R.id.profileFragment
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -38,12 +41,11 @@ class MainActivity : AppCompatActivity() {
                 bottomNavigationView.visibility = View.GONE
             } else if (destination.id == R.id.teacherRegisterFragment) {
                 bottomNavigationView.visibility = View.GONE
-            }  else if (destination.id == R.id.guidanceFragment) {
+            } else if (destination.id == R.id.guidanceFragment) {
                 bottomNavigationView.visibility = View.GONE
             } else if (destination.id == R.id.studentRegisterFragment) {
                 bottomNavigationView.visibility = View.GONE
-            }
-            else {
+            } else {
                 bottomNavigationView.visibility = View.VISIBLE
             }
         }

@@ -58,6 +58,9 @@ class Repository @Inject constructor(
         firebaseFirestoreSourceProvider.addForumToFirebase(forumModel)
     }
 
-    suspend fun fetchForumMessageFromFirebase() =
+    suspend fun fetchForumMessagesFromFirebase() =
         firebaseFirestoreSourceProvider.fetchForumMessages()
+
+    suspend fun fetchCurrentStudentInfo(currentUserId: String) =
+        firebaseFirestoreSourceProvider.fetchCurrentStudentInfo(currentUserId)
 }

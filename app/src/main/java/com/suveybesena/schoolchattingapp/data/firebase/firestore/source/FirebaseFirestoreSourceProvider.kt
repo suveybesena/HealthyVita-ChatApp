@@ -1,6 +1,7 @@
 package com.suveybesena.schoolchattingapp.data.firebase.firestore.source
 
 
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -101,28 +102,36 @@ class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFi
             val forumId = UUID.randomUUID().toString()
             val time = System.currentTimeMillis()
             val forumMessages = hashMapOf(
-                "forumMessages" to forum.forumMessage,
+                "forumMessage" to forum.forumMessage,
                 "userId" to forum.userId,
                 "time" to time,
-                "messageId" to forumId
+                "messageId" to forumId,
+                "userImage" to forum.userImage,
+                "userName" to forum.userName
             )
-            firebaseFirestore.collection("ForumMessages").document(forum.userId).set(forumMessages)
-
+            firebaseFirestore.collection("ForumMessages").document(forumId).set(forumMessages)
         } catch (e: Exception) {
             throw Exception(e.localizedMessage)
         }
     }
 
     override suspend fun fetchForumMessages(): List<DocumentSnapshot> {
-        return try {
-            firebaseFirestore.collection("ForumMessages").orderBy(
-                "registerDate",
+         try {
+         return firebaseFirestore.collection("ForumMessages").orderBy(
+                "time",
                 Query.Direction.DESCENDING
             ).get().await().documents
-
         } catch (e: Exception) {
             throw Exception(e.localizedMessage)
         }
     }
 
+    override suspend fun fetchCurrentStudentInfo(currentUserId: String): List<DocumentSnapshot> {
+        return try {
+            firebaseFirestore.collection("Student").whereEqualTo("userId", currentUserId).get()
+                .await().documents
+        } catch (e: Exception) {
+            throw Exception(e.localizedMessage)
+        }
+    }
 }

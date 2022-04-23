@@ -21,13 +21,5 @@ class AddMessagesUseCase @Inject constructor(var repository: Repository) {
         }
     }.flowOn(Dispatchers.IO)
 
-    suspend fun invoke(forumModel: ForumModel) = flow {
-        emit(Resource.Loading)
-        try {
-            val forumMessages = repository.saveForumMessagesToFirebase(forumModel)
-            emit(Resource.Success(forumMessages))
-        } catch (e: Exception) {
-            emit(Resource.Error(e.localizedMessage))
-        }
-    }.flowOn(Dispatchers.IO)
+
 }

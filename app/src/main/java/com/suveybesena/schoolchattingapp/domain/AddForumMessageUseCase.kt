@@ -20,4 +20,5 @@ class AddForumMessageUseCase @Inject constructor(val repository: Repository) {
             emit(Resource.Error(e.localizedMessage))
         }
     }.flowOn(Dispatchers.IO)
+
 }
