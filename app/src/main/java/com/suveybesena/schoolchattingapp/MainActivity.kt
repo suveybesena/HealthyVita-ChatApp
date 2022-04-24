@@ -1,8 +1,8 @@
 package com.suveybesena.schoolchattingapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.teachersFragment,
+                R.id.doctorsFragment,
                 R.id.forumFragment,
                 R.id.messagesFragment,
                 R.id.profileFragment
@@ -36,14 +36,13 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-
             if (destination.id == R.id.loginFragment) {
                 bottomNavigationView.visibility = View.GONE
-            } else if (destination.id == R.id.teacherRegisterFragment) {
+            } else if (destination.id == R.id.doctorRegisterFragment) {
                 bottomNavigationView.visibility = View.GONE
             } else if (destination.id == R.id.guidanceFragment) {
                 bottomNavigationView.visibility = View.GONE
-            } else if (destination.id == R.id.studentRegisterFragment) {
+            } else if (destination.id == R.id.patientRegisterFragment) {
                 bottomNavigationView.visibility = View.GONE
             } else {
                 bottomNavigationView.visibility = View.VISIBLE

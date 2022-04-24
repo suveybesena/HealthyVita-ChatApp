@@ -1,10 +1,10 @@
 package com.suveybesena.schoolchattingapp.presentation.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -46,7 +46,7 @@ class LoginFragment : Fragment() {
                     if (binding.etEmail.text.toString() != "") {
                         if (binding.etPassword.text.toString() != "")
                             if (loggedIn == true) {
-                                goTeachersFragment()
+                                goDoctorsFragment()
                             } else {
                                 Snackbar.make(
                                     requireView(),
@@ -62,8 +62,8 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun goTeachersFragment() {
-        findNavController().navigate(R.id.action_loginFragment_to_teachersFragment)
+    private fun goDoctorsFragment() {
+        findNavController().navigate(R.id.action_loginFragment_to_doctorsFragment)
     }
 
     private fun initListeners() {
@@ -75,7 +75,7 @@ class LoginFragment : Fragment() {
     private fun logIn() {
         binding.apply {
             val loginModel = LoginModel(etEmail.text.toString(), etPassword.text.toString())
-            viewModel.handlEvent(LoginEvent.Login(loginModel))
+            viewModel.handleEvent(LoginEvent.Login(loginModel))
         }
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SchoolChattingApp</string>
+    <string name="app_name">HealthyVita</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu">Menu</string>
@@ -7,13 +7,14 @@
     <string name="messages">Messages</string>
     <string name="field">Alanınız</string>
     <string name="lorem">Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış,</string>
+    <string name="forum">Forum</string>
 
 
     <string-array name="Fields">
-        <item>Matematik</item>
-        <item>Fizik</item>
-        <item>Kimya</item>
-        <item>Biyoloji</item>
-        <item>Geometri</item>
+        <item>Dahiliye</item>
+        <item>Cildiye</item>
+        <item>Beslenme ve Diyetetik</item>
+        <item>Çocuk Sağlığı ve Hastalıkları</item>
+        <item>Gastroenteroloji</item>
     </string-array>
 </resources>

@@ -11,32 +11,32 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase):ViewModel() {
+class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase) : ViewModel() {
 
     private val uiState = MutableStateFlow(LoginState())
-    val _uiState : StateFlow<LoginState> = uiState.asStateFlow()
+    val _uiState: StateFlow<LoginState> = uiState.asStateFlow()
 
-    fun handlEvent ( event : LoginEvent){
-        when(event){
-            is LoginEvent.Login ->{
+    fun handleEvent(event: LoginEvent) {
+        when (event) {
+            is LoginEvent.Login -> {
                 event.loginInfo?.let { signInWithEmail(it) }
             }
 
         }
     }
 
-    private fun signInWithEmail(loginInfo : LoginModel) {
-       viewModelScope.launch {
-           loginUseCase.invoke(loginInfo).collect { resultState->
-               when(resultState){
-                   is Resource.Success ->{
-                       uiState.update {  state->
-                           state.copy(loggedIn = true)
-                       }
-                   }
-               }
-           }
-       }
+    private fun signInWithEmail(loginInfo: LoginModel) {
+        viewModelScope.launch {
+            loginUseCase.invoke(loginInfo).collect { resultState ->
+                when (resultState) {
+                    is Resource.Success -> {
+                        uiState.update { state ->
+                            state.copy(loggedIn = true)
+                        }
+                    }
+                }
+            }
+        }
     }
 
 

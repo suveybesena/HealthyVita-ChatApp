@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.suveybesena.schoolchattingapp.common.Resource
 import com.suveybesena.schoolchattingapp.domain.AddForumMessageUseCase
+import com.suveybesena.schoolchattingapp.domain.FetchDoctorInfoUseCase
 import com.suveybesena.schoolchattingapp.domain.FetchForumMessagesUseCase
-import com.suveybesena.schoolchattingapp.domain.FetchStudentInfoUseCase
-import com.suveybesena.schoolchattingapp.domain.FetchTeacherInfoUseCase
+import com.suveybesena.schoolchattingapp.domain.FetchPatientInfoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -16,8 +16,8 @@ import javax.inject.Inject
 class ForumViewModel @Inject constructor(
     private val addForumMessageUseCase: AddForumMessageUseCase,
     private val fetchForumMessagesUseCase: FetchForumMessagesUseCase,
-    val fetchTeacherInfoUseCase: FetchTeacherInfoUseCase,
-    private val fetchStudentInfoUseCase: FetchStudentInfoUseCase
+    private val fetchDoctorUseCase: FetchDoctorInfoUseCase,
+    private val fetchPatientInfoUseCase: FetchPatientInfoUseCase
 ) : ViewModel() {
 
     private val uiState = MutableStateFlow(ForumState())
@@ -25,17 +25,37 @@ class ForumViewModel @Inject constructor(
 
     fun handleEvent(event: ForumEvent) {
         when (event) {
-            is ForumEvent.GetStudentData -> {
-                event.currentUserId?.let { getStudentData(it) }
+            is ForumEvent.GetPatientData -> {
+                event.currentUserId?.let { getPatientData(it) }
             }
             is ForumEvent.AddForumDataToFirebase -> {
                 viewModelScope.launch {
-                    event.forumModel?.let { addForumMessageUseCase.invoke(it).collect { }
+                    event.forumModel?.let {
+                        addForumMessageUseCase.invoke(it).collect { }
                     }
                 }
             }
             is ForumEvent.GetForumData -> {
                 getForumData()
+            }
+            is ForumEvent.GetDoctorData -> {
+                getDoctorData(event.currentUserId)
+            }
+        }
+    }
+
+    private fun getDoctorData(currentUserId: String?) {
+        viewModelScope.launch {
+            if (currentUserId != null) {
+                fetchDoctorUseCase.invoke(currentUserId).collect { resultState ->
+                    when (resultState) {
+                        is Resource.Success -> {
+                            uiState.update { state ->
+                                state.copy(doctorInfo = resultState.data)
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -49,8 +69,8 @@ class ForumViewModel @Inject constructor(
                             state.copy(forumInfo = resultState.data as List<ForumModel>)
                         }
                     }
-                    is Resource.Error->{
-                        uiState.update { state->
+                    is Resource.Error -> {
+                        uiState.update { state ->
                             state.copy(error = resultState.message)
                         }
                     }
@@ -60,21 +80,19 @@ class ForumViewModel @Inject constructor(
         }
     }
 
-    private fun getStudentData(currentUserId: String) {
+    private fun getPatientData(currentUserId: String) {
         viewModelScope.launch {
-            fetchStudentInfoUseCase.invoke(currentUserId).collect { resultState ->
+            fetchPatientInfoUseCase.invoke(currentUserId).collect { resultState ->
                 when (resultState) {
                     is Resource.Success -> {
                         uiState.update { state ->
-                            state.copy(currentStudentInfo = resultState.data)
+                            state.copy(patientInfo = resultState.data)
                         }
                     }
                 }
 
             }
         }
-
     }
-
 
 }

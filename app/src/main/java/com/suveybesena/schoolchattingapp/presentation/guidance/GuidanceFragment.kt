@@ -1,10 +1,10 @@
 package com.suveybesena.schoolchattingapp.presentation.guidance
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.suveybesena.schoolchattingapp.R
@@ -18,6 +18,7 @@ class GuidanceFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,20 +35,20 @@ class GuidanceFragment : Fragment() {
     }
 
     private fun observeData() {
-        if (FirebaseAuth.getInstance().currentUser !=null){
-            findNavController().navigate(R.id.action_guidanceFragment_to_teachersFragment)
+        if (FirebaseAuth.getInstance().currentUser != null) {
+            findNavController().navigate(R.id.action_guidanceFragment_to_doctorsFragment)
 
         }
     }
 
     private fun initListeners() {
-       binding.apply {
-           bvStudents.setOnClickListener {
-                findNavController().navigate(R.id.action_guidanceFragment_to_studentRegisterFragment)
-           }
-           bvTeachers.setOnClickListener {
-                findNavController().navigate(R.id.action_guidanceFragment_to_teacherRegisterFragment)
-           }
-       }
+        binding.apply {
+            bvStudents.setOnClickListener {
+                findNavController().navigate(R.id.action_guidanceFragment_to_patientRegisterFragment)
+            }
+            bvTeachers.setOnClickListener {
+                findNavController().navigate(R.id.action_guidanceFragment_to_doctorRegisterFragment)
+            }
+        }
     }
 }

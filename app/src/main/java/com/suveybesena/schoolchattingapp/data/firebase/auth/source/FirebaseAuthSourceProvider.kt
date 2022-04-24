@@ -3,10 +3,9 @@ package com.suveybesena.schoolchattingapp.data.firebase.auth.source
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.userProfileChangeRequest
-import com.suveybesena.schoolchattingapp.data.firebase.auth.model.RegisterModel
 import com.suveybesena.schoolchattingapp.data.firebase.auth.model.LoginModel
+import com.suveybesena.schoolchattingapp.data.firebase.auth.model.RegisterModel
 import kotlinx.coroutines.tasks.await
-import java.lang.Exception
 import javax.inject.Inject
 
 class FirebaseAuthSourceProvider @Inject constructor(val firebaseAuth: FirebaseAuth) :

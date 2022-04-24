@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.suveybesena.schoolchattingapp.common.downloadImage
 import com.suveybesena.schoolchattingapp.databinding.ItemForumBinding
 
-class ForumAdapter : RecyclerView.Adapter<ForumAdapter.ForumVH>() {
+class ForumAdapter(val itemClick: OnItemForumClick) : RecyclerView.Adapter<ForumAdapter.ForumVH>() {
     class ForumVH(val binding: ItemForumBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val differCallBack = object : DiffUtil.ItemCallback<ForumModel>() {
@@ -18,6 +18,7 @@ class ForumAdapter : RecyclerView.Adapter<ForumAdapter.ForumVH>() {
         ): Boolean {
             return true
         }
+
         override fun areContentsTheSame(
             oldItem: ForumModel,
             newItem: ForumModel
@@ -38,8 +39,15 @@ class ForumAdapter : RecyclerView.Adapter<ForumAdapter.ForumVH>() {
             tvForumUser.text = list.userName
             tvForum.text = list.forumMessage
             ivForumUser.downloadImage(list.userImage)
+
+        }
+        holder.itemView.setOnClickListener {
+            list.let { forumInfo ->
+                itemClick.onItemForumClick(forumInfo)
+            }
         }
     }
+
     override fun getItemCount(): Int {
         return differ.currentList.size
     }

@@ -1,6 +1,5 @@
 package com.suveybesena.schoolchattingapp.data.repository
 
-import android.content.pm.SigningInfo
 import android.net.Uri
 import com.suveybesena.schoolchattingapp.data.firebase.auth.model.LoginModel
 import com.suveybesena.schoolchattingapp.data.firebase.auth.model.RegisterModel
@@ -21,32 +20,36 @@ class Repository @Inject constructor(
 
     suspend fun getCurrentUserId() = firebaseAuthSourceProvider.getCurrentUserId()
 
-    suspend fun saveMediaToStorageForTeachers(profileImage: Uri, currentUserId: String) =
-        firebaseStorageProvider.addImageToStorageForTeachers(profileImage, currentUserId)
+    suspend fun saveMediaToStorageForDoctors(profileImage: Uri, currentUserId: String) =
+        firebaseStorageProvider.addImageToStorageForDoctors(profileImage, currentUserId)
 
-    suspend fun saveMediaToStorageForStudents(profileImage: Uri, currentUserId: String) =
-        firebaseStorageProvider.addImageToStorageForStudents(profileImage, currentUserId)
+    suspend fun saveMediaToStorageForPatients(profileImage: Uri, currentUserId: String) =
+        firebaseStorageProvider.addImageToStorageForPatients(profileImage, currentUserId)
 
 
     suspend fun saveInfoToFirestoreForTeachers(
         userName: String, currentUserId: String, imageUrl: String, userMail: String, field: String
     ) =
-        firebaseFirestoreSourceProvider.addTeacherInfoToFirebase(
+        firebaseFirestoreSourceProvider.addDoctorInfoToFirebase(
             userName,
             currentUserId, imageUrl, userMail, field
         )
 
-    suspend fun saveInfoToFirestoreForStudents(
-        currentUserId: String, imageUrl: String, userName: String
+    suspend fun saveInfoToFirestoreForPatients(
+        currentUserId: String,
+        imageUrl: String,
+        userName: String,
+        userMail: String,
+        userPassword: String
     ) =
-        firebaseFirestoreSourceProvider.addStudentInfoToFirebase(
-            currentUserId, imageUrl, userName
+        firebaseFirestoreSourceProvider.addPatientInfoToFirebase(
+            currentUserId, imageUrl, userName, userMail, userPassword
         )
 
     suspend fun signIn(signingInfo: LoginModel) = firebaseAuthSourceProvider.signIn(signingInfo)
 
-    suspend fun fetchTeacherData() =
-        firebaseFirestoreSourceProvider.fetchTeacherInfo()
+    suspend fun fetchDoctorData() =
+        firebaseFirestoreSourceProvider.fetchDoctorInfo()
 
     suspend fun fetchMessages(currentUserId: String, receiverId: String) =
         firebaseFirestoreSourceProvider.fetchMessagesFromFirebase(currentUserId, receiverId)
@@ -61,6 +64,10 @@ class Repository @Inject constructor(
     suspend fun fetchForumMessagesFromFirebase() =
         firebaseFirestoreSourceProvider.fetchForumMessages()
 
-    suspend fun fetchCurrentStudentInfo(currentUserId: String) =
-        firebaseFirestoreSourceProvider.fetchCurrentStudentInfo(currentUserId)
+    suspend fun fetchCurrentPatientInfo(currentUserId: String) =
+        firebaseFirestoreSourceProvider.fetchCurrentPatientInfo(currentUserId)
+
+    suspend fun fetchCurrentDoctorInfo(currentUserId: String) =
+        firebaseFirestoreSourceProvider.fetchCurrentDoctorInfo(currentUserId)
+
 }

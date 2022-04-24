@@ -14,7 +14,11 @@
         android:id="@+id/profileFragment"
         android:name="com.suveybesena.schoolchattingapp.presentation.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/messagesFragment"
         android:name="com.suveybesena.schoolchattingapp.presentation.messages.MessagesFragment"
@@ -26,19 +30,19 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_teachersFragment"
-            app:destination="@id/teachersFragment" />
+            android:id="@+id/action_loginFragment_to_doctorsFragment"
+            app:destination="@id/doctorsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/teacherRegisterFragment"
-        android:name="com.suveybesena.schoolchattingapp.presentation.register.teacher.TeacherRegisterFragment"
-        android:label="fragment_teacher_register"
-        tools:layout="@layout/fragment_teacher_register" >
+        android:id="@+id/doctorRegisterFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.register.doctor.DoctorRegisterFragment"
+        android:label="fragment_doctor_register"
+        tools:layout="@layout/fragment_doctor_register" >
         <action
-            android:id="@+id/action_teacherRegisterFragment_to_teachersFragment"
-            app:destination="@id/teachersFragment" />
+            android:id="@+id/action_doctorRegisterFragment_to_doctorsFragment"
+            app:destination="@id/doctorsFragment" />
         <action
-            android:id="@+id/action_teacherRegisterFragment_to_loginFragment"
+            android:id="@+id/action_doctorRegisterFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
@@ -47,41 +51,41 @@
         android:label="fragment_guidance"
         tools:layout="@layout/fragment_guidance" >
         <action
-            android:id="@+id/action_guidanceFragment_to_teacherRegisterFragment"
-            app:destination="@id/teacherRegisterFragment" />
+            android:id="@+id/action_guidanceFragment_to_doctorRegisterFragment"
+            app:destination="@id/doctorRegisterFragment" />
         <action
-            android:id="@+id/action_guidanceFragment_to_studentRegisterFragment"
-            app:destination="@id/studentRegisterFragment" />
+            android:id="@+id/action_guidanceFragment_to_patientRegisterFragment"
+            app:destination="@id/patientRegisterFragment" />
         <action
-            android:id="@+id/action_guidanceFragment_to_teachersFragment"
-            app:destination="@id/teachersFragment" />
+            android:id="@+id/action_guidanceFragment_to_doctorsFragment"
+            app:destination="@id/doctorsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/studentRegisterFragment"
-        android:name="com.suveybesena.schoolchattingapp.presentation.register.student.StudentRegisterFragment"
-        android:label="fragment_student_register"
-        tools:layout="@layout/fragment_student_register" >
+        android:id="@+id/patientRegisterFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.register.patient.PatientRegisterFragment"
+        android:label="fragment_patient_register"
+        tools:layout="@layout/fragment_patient_register" >
         <action
-            android:id="@+id/action_studentRegisterFragment_to_teachersFragment"
-            app:destination="@id/teachersFragment" />
+            android:id="@+id/action_patientRegisterFragment_to_doctorsFragment"
+            app:destination="@id/doctorsFragment" />
         <action
-            android:id="@+id/action_studentRegisterFragment_to_loginFragment"
+            android:id="@+id/action_patientRegisterFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/teachersFragment"
-        android:name="com.suveybesena.schoolchattingapp.presentation.teachers.TeachersFragment"
-        android:label="fragment_teachers"
-        tools:layout="@layout/fragment_teachers" >
+        android:id="@+id/doctorsFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.doctors.DoctorsFragment"
+        android:label="fragment_doctors"
+        tools:layout="@layout/fragment_doctors" >
         <action
-            android:id="@+id/action_teachersFragment_to_chatFragment"
+            android:id="@+id/action_doctorsFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
         <action
-            android:id="@+id/action_teachersFragment_to_studentRegisterFragment"
-            app:destination="@id/studentRegisterFragment" />
+            android:id="@+id/action_doctorsFragment_to_patientRegisterFragment"
+            app:destination="@id/patientRegisterFragment" />
         <action
-            android:id="@+id/action_teachersFragment_to_teacherRegisterFragment"
-            app:destination="@id/teacherRegisterFragment" />
+            android:id="@+id/action_doctorsFragment_to_doctorRegisterFragment"
+            app:destination="@id/doctorRegisterFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
@@ -89,13 +93,26 @@
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" >
         <argument
-            android:name="teacherInfo"
-            app:argType="com.suveybesena.schoolchattingapp.presentation.teachers.TeacherFeedModel" />
+            android:name="doctorInfo"
+            app:argType="com.suveybesena.schoolchattingapp.presentation.doctors.DoctorFeedModel" />
     </fragment>
     <fragment
         android:id="@+id/forumFragment"
         android:name="com.suveybesena.schoolchattingapp.presentation.forum.ForumFragment"
         android:label="fragment_forum"
-        tools:layout="@layout/fragment_forum" />
+        tools:layout="@layout/fragment_forum" >
+        <action
+            android:id="@+id/action_forumFragment_to_forumDetailFragment"
+            app:destination="@id/forumDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forumDetailFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.forumdetail.ForumDetailFragment"
+        android:label="fragment_forum_detail"
+        tools:layout="@layout/fragment_forum_detail" >
+        <argument
+            android:name="forumInfo"
+            app:argType="com.suveybesena.schoolchattingapp.presentation.forum.ForumModel" />
+    </fragment>
 
 </navigation>

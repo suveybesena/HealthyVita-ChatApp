@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class FetchMessageUseCase @Inject constructor(val repository: Repository) {
-    suspend fun invoke(currentUserId : String, receiverId : String) = flow {
+    suspend fun invoke(currentUserId: String, receiverId: String) = flow {
         emit(Resource.Loading)
         try {
             val messageList = ArrayList<MessageModel>()
@@ -19,7 +19,7 @@ class FetchMessageUseCase @Inject constructor(val repository: Repository) {
                 val senderId = document.get("sender") as String
                 val imageUrl = document.get("imageUrl") as String
                 val time = document.get("time") as Long
-                val receiver= document.get("receiver") as String
+                val receiver = document.get("receiver") as String
                 val list = MessageModel(message, senderId, imageUrl, time, receiver)
                 messageList.add(list)
             }
@@ -28,8 +28,6 @@ class FetchMessageUseCase @Inject constructor(val repository: Repository) {
             emit(Resource.Error(e.localizedMessage))
         }
     }.flowOn(Dispatchers.IO)
-
-
 
 
 }

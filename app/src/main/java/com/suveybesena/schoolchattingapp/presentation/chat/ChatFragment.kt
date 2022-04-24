@@ -1,16 +1,14 @@
 package com.suveybesena.schoolchattingapp.presentation.chat
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.suveybesena.schoolchattingapp.R
 import com.suveybesena.schoolchattingapp.common.downloadImage
 import com.suveybesena.schoolchattingapp.databinding.FragmentChatBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,7 +46,7 @@ class ChatFragment : Fragment() {
     }
 
     private fun saveMessage() {
-        val selectedUserInfo = args.teacherInfo
+        val selectedUserInfo = args.doctorInfo
         val message = binding.etMessage.text.toString()
         val date = System.currentTimeMillis()
         val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
@@ -82,11 +80,11 @@ class ChatFragment : Fragment() {
     }
 
     private fun observeData() {
-        val selectedUserInfo = args.teacherInfo
+        val selectedUserInfo = args.doctorInfo
         val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
         binding.apply {
             ivProfile.downloadImage(selectedUserInfo.image)
-            tvTeacherName.text = selectedUserInfo.name
+            tvDoctorName.text = selectedUserInfo.name
         }
 
         currentUserId?.let { ChatEvent.FetchMessage(it, selectedUserInfo.id) }

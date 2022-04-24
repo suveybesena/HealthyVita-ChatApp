@@ -22,9 +22,9 @@ class ChatViewModel @Inject constructor(
     fun handleEvent(event: ChatEvent) {
         when (event) {
             is ChatEvent.AddMessageToFirebase -> {
-                 addMessages(event.messageModel)
+                addMessages(event.messageModel)
             }
-            is ChatEvent.FetchMessage-> {
+            is ChatEvent.FetchMessage -> {
                 fetchMessages(event.currentUserId, event.receiverId)
             }
         }

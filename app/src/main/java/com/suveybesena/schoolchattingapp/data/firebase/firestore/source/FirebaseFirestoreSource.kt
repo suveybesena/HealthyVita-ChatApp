@@ -1,12 +1,12 @@
 package com.suveybesena.schoolchattingapp.data.firebase.firestore.source
 
-import com.google.firebase.auth.FirebaseUser
+
 import com.google.firebase.firestore.DocumentSnapshot
 import com.suveybesena.schoolchattingapp.presentation.chat.MessageModel
 import com.suveybesena.schoolchattingapp.presentation.forum.ForumModel
 
 interface FirebaseFirestoreSource {
-    suspend fun addTeacherInfoToFirebase(
+    suspend fun addDoctorInfoToFirebase(
         userName: String,
         currentUserId: String,
         imageUrl: String,
@@ -14,9 +14,12 @@ interface FirebaseFirestoreSource {
         field: String
     )
 
-    suspend fun addStudentInfoToFirebase(currentUserId: String, imageUrl: String, userName: String)
+    suspend fun addPatientInfoToFirebase(
+        currentUserId: String, imageUrl: String, userName: String, userMail: String,
+        userPassword: String
+    )
 
-    suspend fun fetchTeacherInfo(): List<DocumentSnapshot>
+    suspend fun fetchDoctorInfo(): List<DocumentSnapshot>
 
     suspend fun addMessagesToFirebase(messages: MessageModel)
 
@@ -29,7 +32,8 @@ interface FirebaseFirestoreSource {
 
     suspend fun fetchForumMessages(): List<DocumentSnapshot>
 
-    suspend fun fetchCurrentStudentInfo (currentUserId: String)  :List<DocumentSnapshot>
+    suspend fun fetchCurrentPatientInfo(currentUserId: String): List<DocumentSnapshot>
 
+    suspend fun fetchCurrentDoctorInfo(currentUserId: String): List<DocumentSnapshot>
 
 }

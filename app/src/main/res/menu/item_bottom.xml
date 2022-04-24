@@ -3,9 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/teachersFragment"
+        android:id="@+id/doctorsFragment"
         android:icon="@drawable/ic_home"
         android:title="@string/menu" />
+    <item
+        android:id="@+id/forumFragment"
+        android:icon="@drawable/ic_qa"
+        android:title="@string/forum" />
     <item
     android:id="@+id/messagesFragment"
     android:icon="@drawable/ic_messages"
@@ -14,9 +18,4 @@
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"
         android:title="@string/profile" />
-
-    <item
-        android:id="@+id/forumFragment"
-        android:icon="@drawable/ic_qa"
-        android:title="Forum" />
 </menu>

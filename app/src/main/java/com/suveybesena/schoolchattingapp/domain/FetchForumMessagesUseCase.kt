@@ -6,7 +6,6 @@ import com.suveybesena.schoolchattingapp.presentation.forum.ForumModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import java.lang.Exception
 import javax.inject.Inject
 
 class FetchForumMessagesUseCase @Inject constructor(val repository: Repository) {

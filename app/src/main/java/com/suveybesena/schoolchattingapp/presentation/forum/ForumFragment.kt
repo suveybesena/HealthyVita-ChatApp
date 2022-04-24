@@ -1,12 +1,13 @@
 package com.suveybesena.schoolchattingapp.presentation.forum
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.suveybesena.schoolchattingapp.R
 import com.suveybesena.schoolchattingapp.common.downloadImage
@@ -38,39 +39,61 @@ class ForumFragment : Fragment() {
         setupRecyclerView()
         observeData()
         initListeners()
+
     }
 
     private fun observeData() {
         val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
         viewModel.handleEvent(ForumEvent.GetForumData)
-        viewModel.handleEvent(ForumEvent.GetStudentData(currentUserId))
-
+        viewModel.handleEvent(ForumEvent.GetPatientData(currentUserId))
         lifecycleScope.launch {
             viewModel._uiState.collect { state ->
-                state.currentStudentInfo.let { currentUser ->
-                    binding.apply {
-                        if (currentUser != null) {
-                            tvCurrentUser.text = currentUser.name
-                            userName = currentUser.name
-                            ivUser.downloadImage(currentUser.image)
-                            userImage = currentUser.image
+                state.patientInfo.let { patient ->
+                    if (patient != null) {
+                        binding.apply {
+                            tvCurrentUser.text = patient.name
+                            userName = patient.name
+                            ivUser.downloadImage(patient.image)
+                            userImage = patient.image
                         }
+                    } else {
+                        viewModel.handleEvent(ForumEvent.GetDoctorData(currentUserId))
+                            state.doctorInfo.let { doctor ->
+                                if (doctor != null) {
+                                    binding.apply {
+                                        tvCurrentUser.text = doctor.name
+                                        userName = doctor.name
+                                        ivUser.downloadImage(doctor.image)
+                                        userImage = doctor.image
+                                        println(doctor.name)
+                                    }
+                                }
+                            }
                     }
                 }
-                state.forumInfo.let { list ->
-                    adapter.differ.submitList(list)
-                    println(list)
+                    state.forumInfo.let { list ->
+                        adapter.differ.submitList(list)
+                        println(list)
                 }
-                println(state.error)
             }
         }
     }
 
     private fun setupRecyclerView() {
-        adapter = ForumAdapter()
+        adapter = ForumAdapter(object : OnItemForumClick {
+            override fun onItemForumClick(forumModel: ForumModel) {
+                goForumDetails(forumModel)
+            }
+        })
         binding.apply {
             rvForum.adapter = adapter
         }
+    }
+
+    fun goForumDetails(forumModel: ForumModel) {
+        val bundle = Bundle()
+        bundle.putSerializable("forumInfo", forumModel)
+        findNavController().navigate(R.id.action_forumFragment_to_forumDetailFragment, bundle)
     }
 
     private fun initListeners() {
