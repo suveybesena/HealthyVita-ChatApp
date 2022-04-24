@@ -33,4 +33,18 @@ class FirebaseStorageSourceProvider @Inject constructor(private val firebaseStor
             throw Exception(e.localizedMessage)
         }
     }
+
+    override suspend fun addMessageImageToStorage(
+        attachedImage: Uri,
+        currentUserId: String
+    ): String {
+        try {
+            val reference = firebaseStorage.reference.child("attachedImages/${currentUserId}.jpg")
+            reference.putFile(attachedImage).await()
+            return reference.downloadUrl.await().toString()
+
+        } catch (e: Exception) {
+            throw Exception(e.localizedMessage)
+        }
+    }
 }
