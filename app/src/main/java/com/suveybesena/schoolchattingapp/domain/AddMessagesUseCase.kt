@@ -12,12 +12,13 @@ class AddMessagesUseCase @Inject constructor(var repository: Repository) {
     suspend fun invoke(messageModel: MessageModel) = flow {
         emit(Resource.Loading)
         try {
-            val addMessage = repository.saveMessageToFirestore(messageModel)
-            emit(Resource.Success(addMessage))
+            repository.saveMediaToStorageForMessages(messageModel.imageUrl, messageModel.senderId)
+                .let { image ->
+                    repository.saveMessageToFirestore(messageModel, image)
+                }
+            emit(Resource.Success(null))
         } catch (e: Exception) {
             emit(Resource.Error(e.localizedMessage))
         }
     }.flowOn(Dispatchers.IO)
-
-
 }
