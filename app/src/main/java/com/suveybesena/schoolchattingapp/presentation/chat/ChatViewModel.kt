@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.suveybesena.schoolchattingapp.common.Resource
 import com.suveybesena.schoolchattingapp.domain.AddMessagesUseCase
-import com.suveybesena.schoolchattingapp.domain.FetchMessageUseCase
+import com.suveybesena.schoolchattingapp.domain.FetchMessagesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -13,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ChatViewModel @Inject constructor(
     private val addMessagesUseCase: AddMessagesUseCase,
-    private val fetchMessageUseCase: FetchMessageUseCase
+    private val fetchMessagesUseCase: FetchMessagesUseCase
 ) : ViewModel() {
 
     private val uiState = MutableStateFlow(ChatUiState())
@@ -38,11 +38,11 @@ class ChatViewModel @Inject constructor(
 
     private fun fetchMessages(currentUserId: String, receiverId: String) {
         viewModelScope.launch {
-            fetchMessageUseCase.invoke(currentUserId, receiverId).collect { resultState ->
+            fetchMessagesUseCase.invoke(currentUserId, receiverId).collect { resultState ->
                 when (resultState) {
                     is Resource.Success -> {
                         uiState.update { state ->
-                            state.copy(messageList = resultState.data as List<MessageModel>)
+                            state.copy(messageList = resultState.data as List<FetchedMessageModel>)
                         }
                     }
                 }

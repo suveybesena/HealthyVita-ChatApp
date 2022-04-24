@@ -16,7 +16,7 @@ class CreatePatientUseCase @Inject constructor(val repository: Repository) {
             repository.signUp(registerModel).let {
                 repository.getCurrentUserId()?.let { id ->
                     repository.saveMediaToStorageForPatients(registerModel.userPhoto, id)
-                        ?.let { image ->
+                        .let { image ->
                             repository.saveInfoToFirestoreForPatients(
                                 id,
                                 image,

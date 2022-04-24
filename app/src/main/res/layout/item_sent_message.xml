@@ -31,6 +31,7 @@
     <ImageView
         android:id="@+id/ivMessage"
         android:layout_width="100dp"
+        android:padding="5dp"
         android:scaleType="centerCrop"
         android:layout_height="100dp"
         android:visibility="gone"

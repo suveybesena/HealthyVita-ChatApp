@@ -17,7 +17,7 @@ class CreateDoctorUseCase @Inject constructor(private val repository: Repository
             repository.signUp(registerModel).let {
                 repository.getCurrentUserId()?.let { id ->
                     repository.saveMediaToStorageForDoctors(registerModel.userPhoto, id)
-                        ?.let { image ->
+                        .let { image ->
                             repository.saveInfoToFirestoreForTeachers(
                                 registerModel.userName, id, image, registerModel.email, field
                             )
