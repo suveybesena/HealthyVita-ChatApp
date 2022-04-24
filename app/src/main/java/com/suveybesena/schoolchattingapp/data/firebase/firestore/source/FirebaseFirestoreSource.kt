@@ -21,7 +21,7 @@ interface FirebaseFirestoreSource {
 
     suspend fun fetchDoctorInfo(): List<DocumentSnapshot>
 
-    suspend fun addMessagesToFirebase(messages: MessageModel)
+    suspend fun addMessagesToFirebase(messages: MessageModel, imageUrl: String)
 
     suspend fun fetchMessagesFromFirebase(
         currentUserId: String,

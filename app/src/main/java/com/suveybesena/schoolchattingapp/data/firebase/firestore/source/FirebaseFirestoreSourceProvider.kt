@@ -65,7 +65,7 @@ class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFi
         }
     }
 
-    override suspend fun addMessagesToFirebase(messages: MessageModel) {
+    override suspend fun addMessagesToFirebase(messages: MessageModel,imageUrl : String) {
         try {
             val uuid = UUID.randomUUID().toString()
             val senderRoom = messages.senderId + messages.receiverId
@@ -76,7 +76,7 @@ class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFi
                 "receiver" to messages.receiverId,
                 "time" to messages.time,
                 "message" to messages.message,
-                "imageUrl" to messages.imageUrl,
+                "imageUrl" to imageUrl,
                 "room" to list
             )
             firebaseFirestore.collection("Messages").document(uuid).set(message)
