@@ -26,6 +26,9 @@ class Repository @Inject constructor(
     suspend fun saveMediaToStorageForPatients(profileImage: Uri, currentUserId: String) =
         firebaseStorageProvider.addImageToStorageForPatients(profileImage, currentUserId)
 
+    suspend fun saveMediaToStorageForMessages(profileImage: Uri, currentUserId: String) =
+        firebaseStorageProvider.addMessageImageToStorage(profileImage, currentUserId)
+
 
     suspend fun saveInfoToFirestoreForTeachers(
         userName: String, currentUserId: String, imageUrl: String, userMail: String, field: String
@@ -54,8 +57,8 @@ class Repository @Inject constructor(
     suspend fun fetchMessages(currentUserId: String, receiverId: String) =
         firebaseFirestoreSourceProvider.fetchMessagesFromFirebase(currentUserId, receiverId)
 
-    suspend fun saveMessageToFirestore(messageModel: MessageModel) =
-        firebaseFirestoreSourceProvider.addMessagesToFirebase(messageModel)
+    suspend fun saveMessageToFirestore(messageModel: MessageModel, image : String) =
+        firebaseFirestoreSourceProvider.addMessagesToFirebase(messageModel, image)
 
     suspend fun saveForumMessagesToFirebase(forumModel: ForumModel) {
         firebaseFirestoreSourceProvider.addForumToFirebase(forumModel)
