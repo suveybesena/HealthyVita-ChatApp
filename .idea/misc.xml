@@ -3,9 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/drawable/ic_qa.xml" value="0.1845" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/drawable/ic_videocall.xml" value="0.121" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_chat.xml" value="0.264" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_doctors.xml" value="0.19157608695652173" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_video_call.xml" value="0.2" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_video_room.xml" value="0.19157608695652173" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/item_doctor.xml" value="0.1504424778761062" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/item_receive_message.xml" value="0.19157608695652173" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/item_sent_message.xml" value="0.19157608695652173" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/nav_bottom_bar.xml" value="0.19157608695652173" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/menu/item_bottom.xml" value="0.275" />
       </map>
     </option>
   </component>

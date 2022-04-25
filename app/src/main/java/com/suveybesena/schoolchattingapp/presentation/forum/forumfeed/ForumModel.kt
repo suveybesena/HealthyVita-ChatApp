@@ -1,4 +1,4 @@
-package com.suveybesena.schoolchattingapp.presentation.forum
+package com.suveybesena.schoolchattingapp.presentation.forum.forumfeed
 
 import java.io.Serializable
 

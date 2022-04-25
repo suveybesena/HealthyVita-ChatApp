@@ -1,4 +1,4 @@
-package com.suveybesena.schoolchattingapp.presentation.forum
+package com.suveybesena.schoolchattingapp.presentation.forum.forumfeed
 
 sealed class ForumEvent {
     data class GetPatientData(val currentUserId: String?) : ForumEvent()

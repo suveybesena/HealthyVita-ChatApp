@@ -1,4 +1,4 @@
-package com.suveybesena.schoolchattingapp.presentation.forum
+package com.suveybesena.schoolchattingapp.presentation.forum.forumfeed
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

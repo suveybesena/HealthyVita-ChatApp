@@ -1,4 +1,4 @@
-package com.suveybesena.schoolchattingapp.presentation.forumdetail
+package com.suveybesena.schoolchattingapp.presentation.forum.forumdetail
 
 import android.os.Bundle
 import android.view.LayoutInflater

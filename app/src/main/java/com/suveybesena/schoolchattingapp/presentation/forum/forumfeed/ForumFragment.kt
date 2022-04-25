@@ -1,4 +1,4 @@
-package com.suveybesena.schoolchattingapp.presentation.forum
+package com.suveybesena.schoolchattingapp.presentation.forum.forumfeed
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,6 @@ import com.suveybesena.schoolchattingapp.R
 import com.suveybesena.schoolchattingapp.common.downloadImage
 import com.suveybesena.schoolchattingapp.databinding.FragmentForumBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
 

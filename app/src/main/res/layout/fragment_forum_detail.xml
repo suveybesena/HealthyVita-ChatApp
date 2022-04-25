@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.forumdetail.ForumDetailFragment">
+    tools:context=".presentation.forum.forumdetail.ForumDetailFragment">
 
 
     <androidx.cardview.widget.CardView

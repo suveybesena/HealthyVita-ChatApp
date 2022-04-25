@@ -62,9 +62,11 @@ class ChatAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder?>() {
         val chats = differ.currentList[position]
         if (holder.javaClass == SentMessageHolder::class.java) {
             val viewHolder = holder as SentMessageHolder
-            if(chats.imageUrl != null){
+            if(chats.imageUrl != ""){
                 viewHolder.binding.ivMessage.visibility = View.VISIBLE
                 viewHolder.binding.ivMessage.downloadImage(chats.imageUrl!!)
+            } else {
+                viewHolder.binding.ivMessage.visibility = View.GONE
             }
             viewHolder.binding.tvMessage.text = chats.message
         } else {

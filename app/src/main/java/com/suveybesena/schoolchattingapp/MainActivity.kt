@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.doctorsFragment,
                 R.id.forumFragment,
-                R.id.messagesFragment,
+                R.id.videoRoomFragment,
                 R.id.profileFragment
             )
         )
@@ -49,4 +49,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
 }

@@ -5,7 +5,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.suveybesena.schoolchattingapp.presentation.chat.MessageModel
-import com.suveybesena.schoolchattingapp.presentation.forum.ForumModel
+import com.suveybesena.schoolchattingapp.presentation.forum.forumfeed.ForumModel
 import kotlinx.coroutines.tasks.await
 import java.util.*
 import javax.inject.Inject
@@ -79,7 +79,7 @@ class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFi
                 "imageUrl" to imageUrl,
                 "room" to list
             )
-            firebaseFirestore.collection("Messages").document(uuid).set(message)
+            firebaseFirestore.collection("Messages").document(uuid).set(message).await()
         } catch (e: Exception) {
             throw Exception(e.localizedMessage)
         }

@@ -1,4 +1,4 @@
-package com.suveybesena.schoolchattingapp.presentation.forumdetail
+package com.suveybesena.schoolchattingapp.presentation.forum.forumdetail
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

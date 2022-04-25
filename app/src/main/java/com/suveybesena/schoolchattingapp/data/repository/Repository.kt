@@ -7,7 +7,7 @@ import com.suveybesena.schoolchattingapp.data.firebase.auth.source.FirebaseAuthS
 import com.suveybesena.schoolchattingapp.data.firebase.firestore.source.FirebaseFirestoreSourceProvider
 import com.suveybesena.schoolchattingapp.data.firebase.storage.source.FirebaseStorageSourceProvider
 import com.suveybesena.schoolchattingapp.presentation.chat.MessageModel
-import com.suveybesena.schoolchattingapp.presentation.forum.ForumModel
+import com.suveybesena.schoolchattingapp.presentation.forum.forumfeed.ForumModel
 import javax.inject.Inject
 
 class Repository @Inject constructor(

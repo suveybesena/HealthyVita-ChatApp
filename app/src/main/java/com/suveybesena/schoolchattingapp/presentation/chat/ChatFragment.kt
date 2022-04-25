@@ -70,13 +70,15 @@ class ChatFragment : Fragment() {
         val message = binding.etMessage.text.toString()
         val date = System.currentTimeMillis()
         val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
-
         if (message != "") {
             val messageModel =
                 currentUserId?.let { currentUser ->
                     pickedImage?.let { uri->
                         MessageModel(message, currentUser,
                             uri, date, selectedUserInfo.id)
+                    } ?: run{
+                        MessageModel(message, currentUser,
+                            null, date, selectedUserInfo.id)
                     }
                 }
             messageModel?.let { messages ->
@@ -93,6 +95,7 @@ class ChatFragment : Fragment() {
                 }
         }
             binding.etMessage.setText("")
+        pickedImage=null
     }
 
     private fun setupRecyclerView() {

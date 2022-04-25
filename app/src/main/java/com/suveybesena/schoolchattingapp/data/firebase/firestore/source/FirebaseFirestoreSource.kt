@@ -3,7 +3,7 @@ package com.suveybesena.schoolchattingapp.data.firebase.firestore.source
 
 import com.google.firebase.firestore.DocumentSnapshot
 import com.suveybesena.schoolchattingapp.presentation.chat.MessageModel
-import com.suveybesena.schoolchattingapp.presentation.forum.ForumModel
+import com.suveybesena.schoolchattingapp.presentation.forum.forumfeed.ForumModel
 
 interface FirebaseFirestoreSource {
     suspend fun addDoctorInfoToFirebase(

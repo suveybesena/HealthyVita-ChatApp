@@ -20,11 +20,6 @@
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/messagesFragment"
-        android:name="com.suveybesena.schoolchattingapp.presentation.messages.MessagesFragment"
-        android:label="fragment_messages"
-        tools:layout="@layout/fragment_messages" />
-    <fragment
         android:id="@+id/loginFragment"
         android:name="com.suveybesena.schoolchattingapp.presentation.login.LoginFragment"
         android:label="fragment_login"
@@ -98,7 +93,7 @@
     </fragment>
     <fragment
         android:id="@+id/forumFragment"
-        android:name="com.suveybesena.schoolchattingapp.presentation.forum.ForumFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.forum.forumfeed.ForumFragment"
         android:label="fragment_forum"
         tools:layout="@layout/fragment_forum" >
         <action
@@ -107,12 +102,30 @@
     </fragment>
     <fragment
         android:id="@+id/forumDetailFragment"
-        android:name="com.suveybesena.schoolchattingapp.presentation.forumdetail.ForumDetailFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.forum.forumdetail.ForumDetailFragment"
         android:label="fragment_forum_detail"
         tools:layout="@layout/fragment_forum_detail" >
         <argument
             android:name="forumInfo"
-            app:argType="com.suveybesena.schoolchattingapp.presentation.forum.ForumModel" />
+            app:argType="com.suveybesena.schoolchattingapp.presentation.forum.forumfeed.ForumModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoRoomFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.videocall.VideoRoomFragment"
+        android:label="fragment_video_room"
+        tools:layout="@layout/fragment_video_room" >
+        <action
+            android:id="@+id/action_videoRoomFragment_to_videoCallFragment"
+            app:destination="@id/videoCallFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoCallFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.videocall.VideoCallFragment"
+        android:label="fragment_video_call"
+        tools:layout="@layout/fragment_video_call" >
+        <argument
+            android:name="roomInfo"
+            app:argType="com.suveybesena.schoolchattingapp.presentation.videocall.VideoCallModel" />
     </fragment>
 
 </navigation>
