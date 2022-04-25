@@ -5,10 +5,13 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.suveybesena.schoolchattingapp.presentation.chat.MessageModel
+import com.suveybesena.schoolchattingapp.presentation.forum.forumdetail.ForumAnswersModel
+import com.suveybesena.schoolchattingapp.presentation.forum.forumdetail.ForumDetailModel
 import com.suveybesena.schoolchattingapp.presentation.forum.forumfeed.ForumModel
 import kotlinx.coroutines.tasks.await
 import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFirestore: FirebaseFirestore) :
     FirebaseFirestoreSource {
@@ -65,7 +68,7 @@ class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFi
         }
     }
 
-    override suspend fun addMessagesToFirebase(messages: MessageModel,imageUrl : String) {
+    override suspend fun addMessagesToFirebase(messages: MessageModel, imageUrl: String) {
         try {
             val uuid = UUID.randomUUID().toString()
             val senderRoom = messages.senderId + messages.receiverId
@@ -108,7 +111,8 @@ class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFi
                 "time" to time,
                 "messageId" to forumId,
                 "userImage" to forum.userImage,
-                "userName" to forum.userName
+                "userName" to forum.userName,
+                "forumAnswers" to forum.answerList
             )
             firebaseFirestore.collection("ForumMessages").document(forumId).set(forumMessages)
         } catch (e: Exception) {
@@ -140,6 +144,30 @@ class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFi
         return try {
             firebaseFirestore.collection("Doctor").whereEqualTo("userId", currentUserId).get()
                 .await().documents
+        } catch (e: Exception) {
+            throw Exception(e.localizedMessage)
+        }
+    }
+
+    override suspend fun addForumAnswers(forumAnswersModel: ForumDetailModel) {
+        try {
+            val forumId = UUID.randomUUID().toString()
+            val time = System.currentTimeMillis()
+            val message = hashMapOf(
+                "messageId" to forumAnswersModel.messageId,
+                "answers" to forumAnswersModel.message,
+                "time" to time
+            )
+            firebaseFirestore.collection("ForumAnswers").document(forumId).set(message).await()
+        } catch (e: Exception) {
+            throw Exception(e.localizedMessage)
+        }
+    }
+
+    override suspend fun fetchForumAnswers(messageId: String): List<DocumentSnapshot> {
+        return try {
+             firebaseFirestore.collection("ForumAnswers").whereEqualTo("messageId", messageId)
+                .get().await().documents
         } catch (e: Exception) {
             throw Exception(e.localizedMessage)
         }
