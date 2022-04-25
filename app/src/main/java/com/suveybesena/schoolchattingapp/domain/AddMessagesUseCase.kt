@@ -29,5 +29,5 @@ class AddMessagesUseCase @Inject constructor(var repository: Repository) {
             println(e.localizedMessage)
             emit(Resource.Error(e.localizedMessage))
         }
-    }
+    }.flowOn(Dispatchers.IO)
 }
