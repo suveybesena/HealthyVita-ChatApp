@@ -21,8 +21,9 @@ class FetchForumMessagesUseCase @Inject constructor(val repository: Repository) 
                 val messageId = document.get("messageId") as String
                 val userImage = document.get("userImage") as String
                 val userName = document.get("userName") as String
+                val answerList = document.get("forumAnswers") as ArrayList<String>
                 val listForum =
-                    ForumModel(forumMessages, userId, time, messageId, userImage, userName)
+                    ForumModel(forumMessages, userId, time, messageId, userImage, userName,answerList)
                 forumList.add(listForum)
                 emit(Resource.Success(forumList))
             }
