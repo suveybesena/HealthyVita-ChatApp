@@ -8,6 +8,7 @@ data class ForumModel(
     val time: Long,
     val messageId: String,
     val userImage: String,
-    val userName: String
+    val userName: String,
+    val answerList: ArrayList<String>
 
 ) : Serializable

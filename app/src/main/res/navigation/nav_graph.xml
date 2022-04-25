@@ -126,6 +126,9 @@
         <argument
             android:name="roomInfo"
             app:argType="com.suveybesena.schoolchattingapp.presentation.videocall.VideoCallModel" />
+        <action
+            android:id="@+id/action_videoCallFragment_to_videoRoomFragment"
+            app:destination="@id/videoRoomFragment" />
     </fragment>
 
 </navigation>

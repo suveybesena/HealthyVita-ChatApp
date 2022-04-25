@@ -15,6 +15,7 @@ import com.suveybesena.schoolchattingapp.databinding.FragmentForumBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.*
+import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class ForumFragment : Fragment() {
@@ -72,7 +73,6 @@ class ForumFragment : Fragment() {
                 }
                     state.forumInfo.let { list ->
                         adapter.differ.submitList(list)
-                        println(list)
                 }
             }
         }
@@ -106,6 +106,7 @@ class ForumFragment : Fragment() {
         val forumMessage = binding.etForum.text.toString()
         val time = System.currentTimeMillis()
         val messageId = UUID.randomUUID().toString()
+        val list = ArrayList<String>()
         val forum = currentUserId?.let { it1 ->
             ForumModel(
                 forumMessage,
@@ -113,7 +114,8 @@ class ForumFragment : Fragment() {
                 time,
                 messageId,
                 userImage,
-                userName
+                userName,
+                list
             )
         }
         viewModel.handleEvent(ForumEvent.AddForumDataToFirebase(forum))

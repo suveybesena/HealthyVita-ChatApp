@@ -12,7 +12,7 @@
         android:title="@string/forum" />
     <item
     android:id="@+id/videoRoomFragment"
-    android:icon="@drawable/ic_messages"
+    android:icon="@drawable/ic_videocall"
     android:title="@string/messages" />
     <item
         android:id="@+id/profileFragment"

@@ -7,6 +7,8 @@ import com.suveybesena.schoolchattingapp.data.firebase.auth.source.FirebaseAuthS
 import com.suveybesena.schoolchattingapp.data.firebase.firestore.source.FirebaseFirestoreSourceProvider
 import com.suveybesena.schoolchattingapp.data.firebase.storage.source.FirebaseStorageSourceProvider
 import com.suveybesena.schoolchattingapp.presentation.chat.MessageModel
+import com.suveybesena.schoolchattingapp.presentation.forum.forumdetail.ForumAnswersModel
+import com.suveybesena.schoolchattingapp.presentation.forum.forumdetail.ForumDetailModel
 import com.suveybesena.schoolchattingapp.presentation.forum.forumfeed.ForumModel
 import javax.inject.Inject
 
@@ -72,5 +74,11 @@ class Repository @Inject constructor(
 
     suspend fun fetchCurrentDoctorInfo(currentUserId: String) =
         firebaseFirestoreSourceProvider.fetchCurrentDoctorInfo(currentUserId)
+
+    suspend fun addForumAnswersToFirebase(forumAnswersModel: ForumDetailModel) =
+        firebaseFirestoreSourceProvider.addForumAnswers(forumAnswersModel)
+
+    suspend fun fetchForumAnswersModel (messageId : String) =
+        firebaseFirestoreSourceProvider.fetchForumAnswers(messageId)
 
 }
