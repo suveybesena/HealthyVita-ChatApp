@@ -69,7 +69,6 @@ class ForumDetailFragment : Fragment() {
             viewModel._uiState.collect{state->
                 state.answerList.let { answer->
                     adapter.differ.submitList(answer)
-                    println("asidşalsidşasd  ${answer}")
                 }
             }
         }

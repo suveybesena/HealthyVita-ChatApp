@@ -123,7 +123,6 @@ class ChatFragment : Fragment() {
                         list.forEach { messageInfo ->
                             if (messageInfo.receiverId == selectedUserInfo.id) {
                                 chatAdapter.differ.submitList(list)
-                                println(list)
                             }
                         }
                     }
