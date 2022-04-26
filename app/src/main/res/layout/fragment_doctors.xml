@@ -13,6 +13,7 @@
         android:foregroundGravity="center">
 
         <TextView
+            android:id="@+id/tvConversation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -27,7 +28,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvDoctors"
+        android:id="@+id/rvConversations"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
