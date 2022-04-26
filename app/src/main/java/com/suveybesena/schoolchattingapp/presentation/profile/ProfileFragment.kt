@@ -61,7 +61,6 @@ class ProfileFragment : Fragment() {
                         viewModel.handleEvent(ProfileEvent.FetchPatientData(currentUserId))
                         viewModel._uiState.collect { state ->
                             state.patientInfo.let { patient ->
-                                println(patient)
                                 if (patient != null) {
                                     binding.ivUserImage.downloadImage(patient.image)
                                 }

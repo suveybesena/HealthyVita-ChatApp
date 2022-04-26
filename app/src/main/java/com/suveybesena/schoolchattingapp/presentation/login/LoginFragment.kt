@@ -70,12 +70,17 @@ class LoginFragment : Fragment() {
         binding.bvSignIn.setOnClickListener {
             logIn()
         }
+        binding.bvSignUp.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_guidanceFragment)
+        }
     }
 
     private fun logIn() {
-        binding.apply {
-            val loginModel = LoginModel(etEmail.text.toString(), etPassword.text.toString())
+
+            val email = binding.etEmail.text.toString()
+            val password  = binding.etPassword.text.toString()
+            val loginModel = LoginModel(email, password)
             viewModel.handleEvent(LoginEvent.Login(loginModel))
-        }
+
     }
 }

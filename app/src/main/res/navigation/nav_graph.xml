@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_loginFragment_to_doctorsFragment"
             app:destination="@id/doctorsFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_guidanceFragment"
+            app:destination="@id/guidanceFragment" />
     </fragment>
     <fragment
         android:id="@+id/doctorRegisterFragment"
