@@ -14,19 +14,21 @@
         android:id="@+id/ivBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_recyclerbg"
         android:layout_marginTop="220dp"
+        android:src="@drawable/ic_recyclerbg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivUserImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="120dp"
-        android:background="@drawable/sheldon"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="110dp"
+        tools:src="@drawable/sheldon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,33 +101,22 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Güncelle"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/cardView2"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toStartOf="@+id/cardView2"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2">
-    </com.google.android.material.button.MaterialButton>
-
-    <com.google.android.material.button.MaterialButton
         android:id="@+id/bvSignOut"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="400dp"
         android:text="Çıkış"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cardView2"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/cardView2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="208dp"
+        android:layout_width="409dp"
+        android:layout_height="683dp"
+        android:layout_marginTop="252dp"
         android:src="@drawable/doc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
