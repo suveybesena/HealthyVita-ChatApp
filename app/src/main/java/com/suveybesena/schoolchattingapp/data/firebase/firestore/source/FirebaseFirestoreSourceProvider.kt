@@ -88,6 +88,17 @@ class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFi
         }
     }
 
+    override suspend fun fetchPatientMessageFromFirebase(
+        currentUserId: String
+    ): List<DocumentSnapshot> {
+        try {
+            return firebaseFirestore.collection("Messages").whereEqualTo("receiver", currentUserId)
+                .get().await().documents
+        } catch (e: Exception) {
+            throw Exception(e.localizedMessage)
+        }
+    }
+
     override suspend fun fetchMessagesFromFirebase(
         currentUserId: String,
         receiverId: String
@@ -111,8 +122,7 @@ class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFi
                 "time" to time,
                 "messageId" to forumId,
                 "userImage" to forum.userImage,
-                "userName" to forum.userName,
-                "forumAnswers" to forum.answerList
+                "userName" to forum.userName
             )
             firebaseFirestore.collection("ForumMessages").document(forumId).set(forumMessages)
         } catch (e: Exception) {

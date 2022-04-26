@@ -41,4 +41,8 @@ interface FirebaseFirestoreSource {
     suspend fun fetchForumAnswers(messageId: String): List<DocumentSnapshot>
 
     suspend fun addForumAnswers(forumAnswersModel: ForumDetailModel)
+
+    suspend fun fetchPatientMessageFromFirebase(
+        currentUserId: String
+    ): List<DocumentSnapshot>
 }
