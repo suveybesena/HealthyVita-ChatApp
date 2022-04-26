@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:fontFamily="@font/alata"
-        android:text="Öğrenci"
+        android:text="Patient"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="104dp"
         android:fontFamily="@font/alata"
-        android:text="Öğretmen"
+        android:text="Doctor"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,9 +41,10 @@
         android:layout_height="wrap_content"
         android:src="@drawable/patient"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.496"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintVertical_bias="0.496" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
