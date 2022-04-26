@@ -65,7 +65,6 @@ class ForumFragment : Fragment() {
                                         userName = doctor.name
                                         ivUser.downloadImage(doctor.image)
                                         userImage = doctor.image
-                                        println(doctor.name)
                                     }
                                 }
                             }
@@ -106,7 +105,6 @@ class ForumFragment : Fragment() {
         val forumMessage = binding.etForum.text.toString()
         val time = System.currentTimeMillis()
         val messageId = UUID.randomUUID().toString()
-        val list = ArrayList<String>()
         val forum = currentUserId?.let { it1 ->
             ForumModel(
                 forumMessage,
@@ -114,8 +112,7 @@ class ForumFragment : Fragment() {
                 time,
                 messageId,
                 userImage,
-                userName,
-                list
+                userName
             )
         }
         viewModel.handleEvent(ForumEvent.AddForumDataToFirebase(forum))
