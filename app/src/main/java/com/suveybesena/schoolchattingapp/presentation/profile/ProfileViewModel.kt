@@ -13,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val fetchTeachersUseCase: FetchDoctorInfoUseCase,
-    val fetchPatientInfoUseCase: FetchPatientInfoUseCase
+    private val fetchPatientInfoUseCase: FetchPatientInfoUseCase
 ) : ViewModel() {
 
     private val uiState = MutableStateFlow(ProfileState())
