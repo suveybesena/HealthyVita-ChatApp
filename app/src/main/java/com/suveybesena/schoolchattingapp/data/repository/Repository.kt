@@ -81,4 +81,6 @@ class Repository @Inject constructor(
     suspend fun fetchForumAnswersModel (messageId : String) =
         firebaseFirestoreSourceProvider.fetchForumAnswers(messageId)
 
+    suspend fun fetchPatientMessage(currentUserId: String) =
+        firebaseFirestoreSourceProvider.fetchPatientMessageFromFirebase(currentUserId)
 }
