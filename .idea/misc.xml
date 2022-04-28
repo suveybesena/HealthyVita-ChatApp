@@ -7,10 +7,13 @@
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/drawable/ic_qa.xml" value="0.1845" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/drawable/ic_videocall.xml" value="0.121" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_chat.xml" value="0.264" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_doctor_register.xml" value="0.20878623188405798" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_doctors.xml" value="0.19157608695652173" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_forum.xml" value="0.1" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_forum_detail.xml" value="0.2" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_guidance.xml" value="0.20969202898550723" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_login.xml" value="0.20878623188405798" />
+        <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_patient_register.xml" value="0.20878623188405798" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_video_call.xml" value="0.2" />
         <entry key="..\:/Users/SuveybeSena/AndroidStudioProjects/HealthyVita/app/src/main/res/layout/fragment_video_room.xml" value="0.19157608695652173" />

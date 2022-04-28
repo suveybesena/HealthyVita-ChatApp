@@ -12,6 +12,8 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
+        android:layout_gravity="right"
+        android:gravity="right"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_sent"
         android:orientation="vertical"
