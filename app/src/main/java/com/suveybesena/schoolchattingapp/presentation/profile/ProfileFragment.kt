@@ -8,22 +8,30 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.work.*
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.suveybesena.schoolchattingapp.R
 import com.suveybesena.schoolchattingapp.common.downloadImage
 import com.suveybesena.schoolchattingapp.databinding.FragmentProfileBinding
+import com.suveybesena.schoolchattingapp.presentation.workmanager.RunWorker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
     private val viewModel: ProfileViewModel by viewModels()
+    private lateinit var request: WorkRequest
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,7 +52,24 @@ class ProfileFragment : Fragment() {
             FirebaseAuth.getInstance().signOut()
             findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
         }
+        val workCondition = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build()
+
+        request = PeriodicWorkRequestBuilder<RunWorker>(1, TimeUnit.HOURS)
+            .setConstraints(workCondition)
+            .build()
+
+        binding.svReminder.setOnCheckedChangeListener { buttonView, isChecked ->
+
+            if (buttonView.isChecked == true) {
+                setWorkReminder(request)
+            } else {
+                cancelReminder(request)
+            }
+        }
     }
+
 
     private fun observeData() {
         val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
@@ -76,5 +101,25 @@ class ProfileFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun setWorkReminder(request: WorkRequest) {
+        WorkManager.getInstance(requireContext())
+            .enqueue(request)
+        Snackbar.make(
+            requireView(),
+            "Hourly notifications turned on.",
+            Snackbar.LENGTH_LONG
+        ).show()
+    }
+
+    private fun cancelReminder(request: WorkRequest) {
+        WorkManager.getInstance(requireContext())
+            .cancelWorkById(request.id)
+        Snackbar.make(
+            requireView(),
+            "Hourly notifications are turned off.",
+            Snackbar.LENGTH_LONG
+        ).show()
     }
 }
