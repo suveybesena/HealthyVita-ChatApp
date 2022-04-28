@@ -105,7 +105,8 @@ class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFi
     ): List<DocumentSnapshot> {
         try {
             val senderRoom = currentUserId + receiverId
-            return firebaseFirestore.collection("Messages").whereArrayContains("room", senderRoom)
+            return firebaseFirestore.collection("Messages")
+                .whereArrayContains("room", senderRoom).orderBy("time", Query.Direction.ASCENDING)
                 .get().await().documents
         } catch (e: Exception) {
             throw Exception(e.localizedMessage)
@@ -176,7 +177,7 @@ class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFi
 
     override suspend fun fetchForumAnswers(messageId: String): List<DocumentSnapshot> {
         return try {
-             firebaseFirestore.collection("ForumAnswers").whereEqualTo("messageId", messageId)
+            firebaseFirestore.collection("ForumAnswers").whereEqualTo("messageId", messageId)
                 .get().await().documents
         } catch (e: Exception) {
             throw Exception(e.localizedMessage)
