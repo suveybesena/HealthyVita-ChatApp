@@ -17,7 +17,6 @@ class LoginUseCase @Inject constructor(val repository: Repository) {
                 emit(Resource.Success(null))
             }
         } catch (e: Exception) {
-            emit(Resource.Success(e.localizedMessage))
         }
     }.flowOn(Dispatchers.IO)
 }
