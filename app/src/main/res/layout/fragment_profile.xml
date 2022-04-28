@@ -12,13 +12,13 @@
 
     <ImageView
         android:id="@+id/ivBackground"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="468dp"
+        android:layout_height="649dp"
         android:layout_marginTop="220dp"
         android:src="@drawable/ic_recyclerbg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -27,12 +27,12 @@
         android:id="@+id/ivUserImage"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginTop="110dp"
-        tools:src="@drawable/sheldon"
+        android:layout_marginTop="84dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/sheldon">
 
     </de.hdodenhof.circleimageview.CircleImageView>
 
@@ -102,22 +102,44 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bvSignOut"
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="400dp"
-        android:text="Çıkış"
+        android:text="Sign Out"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/cardView2"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="@+id/cardView2"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <Switch
+        android:id="@+id/svReminder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reminder"
+        android:textColor="#192F42"
+        app:layout_constraintBottom_toTopOf="@+id/bvSignOut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="409dp"
         android:layout_height="683dp"
-        android:layout_marginTop="252dp"
-        android:src="@drawable/doc"
+        android:layout_marginTop="244dp"
+        android:src="@drawable/doci"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/tvLogo"
+        android:layout_width="110dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="272dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/healthyvita"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
