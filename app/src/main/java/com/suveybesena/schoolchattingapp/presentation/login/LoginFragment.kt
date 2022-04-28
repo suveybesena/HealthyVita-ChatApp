@@ -38,7 +38,6 @@ class LoginFragment : Fragment() {
     }
 
     private fun observeData() {
-        val auth = FirebaseAuth.getInstance().currentUser
         lifecycleScope.launch {
             viewModel._uiState.collect { state ->
                 state.loggedIn.let { loggedIn ->
@@ -55,6 +54,20 @@ class LoginFragment : Fragment() {
                             }
                     }
                 }
+                state.isLoading.let {
+                    it
+                    if (it == true) {
+                        binding.pgBar.visibility = View.VISIBLE
+                    } else {
+                        binding.pgBar.visibility = View.GONE
+                    }
+
+                }
+                state.error.let { errorMessage ->
+                    if (errorMessage != null) {
+                        Snackbar.make(requireView(), errorMessage, Snackbar.LENGTH_LONG).show()
+                    }
+                }
             }
         }
     }
@@ -62,6 +75,7 @@ class LoginFragment : Fragment() {
     private fun goDoctorsFragment() {
         findNavController().navigate(R.id.action_loginFragment_to_doctorsFragment)
     }
+
     private fun initListeners() {
         binding.bvSignIn.setOnClickListener {
             logIn()
@@ -72,7 +86,6 @@ class LoginFragment : Fragment() {
     }
 
     private fun logIn() {
-       // FirebaseAuth.getInstance().signOut()
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
         val loginModel = LoginModel(email, password)

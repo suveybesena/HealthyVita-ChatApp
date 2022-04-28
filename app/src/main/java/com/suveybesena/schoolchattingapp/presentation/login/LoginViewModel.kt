@@ -36,16 +36,19 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
                             state.copy(loggedIn = true)
                         }
                     }
-                    is Resource.Loading->{
-                        uiState.update {state->
-                            state.copy()
+                    is Resource.Loading -> {
+                        uiState.update { state ->
+                            state.copy(isLoading = true)
+                        }
 
+                    }
+                    is Resource.Error -> {
+                        uiState.update { state ->
+                            state.copy(error = resultState.message)
                         }
                     }
                 }
             }
         }
     }
-
-
 }

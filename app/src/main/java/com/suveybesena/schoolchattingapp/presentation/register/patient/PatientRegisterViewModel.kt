@@ -42,6 +42,11 @@ class PatientRegisterViewModel @Inject constructor(private val createPatientUseC
                             state.copy(error = resultState.message)
                         }
                     }
+                    is Resource.Loading->{
+                        uiState.update { state->
+                            state.copy(isLoading = true)
+                        }
+                    }
                 }
             }
         }
