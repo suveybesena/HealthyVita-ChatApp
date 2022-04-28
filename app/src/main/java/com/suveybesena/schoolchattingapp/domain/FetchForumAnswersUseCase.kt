@@ -20,8 +20,8 @@ class FetchForumAnswersUseCase @Inject constructor(var repository: Repository) {
                 val time = document.get("time") as String
                 val answer = ForumDetailModel(message, time)
                 answerList.add(answer)
-                emit(Resource.Success(answerList))
             }
+            emit(Resource.Success(answerList))
         } catch (e: Exception) {
             emit(Resource.Error(e.localizedMessage))
         }

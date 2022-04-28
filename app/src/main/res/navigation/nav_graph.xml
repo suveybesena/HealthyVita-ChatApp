@@ -84,6 +84,10 @@
         <action
             android:id="@+id/action_doctorsFragment_to_doctorRegisterFragment"
             app:destination="@id/doctorRegisterFragment" />
+        <action
+            android:id="@+id/action_doctorsFragment_to_guidanceFragment"
+            app:destination="@id/guidanceFragment"
+            app:popUpTo="@+id/doctorsFragment"/>
     </fragment>
     <fragment
         android:id="@+id/chatFragment"

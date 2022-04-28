@@ -81,7 +81,7 @@ class DoctorsFragment : Fragment() {
             viewModel._uiState.collect { state ->
                 state.doctorInfo.let { doctor ->
                     if (doctor?.userId != null) {
-                        binding.tvConversation.text = "Bekleyen Görüşmeleriniz"
+                        binding.tvConversation.text = "Your Pending Messages"
                         setupPatientRecyclerView()
                         viewModel.handleEvent(DoctorsFeedEvent.FetchPatientMessages(currentUserId))
                         lifecycleScope.launch {
@@ -94,7 +94,7 @@ class DoctorsFragment : Fragment() {
                         }
 
                     } else {
-                        binding.tvConversation.text = "Görüşme başlatmak için doktor seçiniz."
+                        binding.tvConversation.text = "Select the doctor you want to see."
                         setupDoctorRecyclerView()
                         viewModel.handleEvent(DoctorsFeedEvent.FetchDoctorsData)
                         lifecycleScope.launch {

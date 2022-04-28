@@ -33,13 +33,12 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        FirebaseAuth.getInstance().signOut()
         initListeners()
         observeData()
-
     }
 
     private fun observeData() {
+        val auth = FirebaseAuth.getInstance().currentUser
         lifecycleScope.launch {
             viewModel._uiState.collect { state ->
                 state.loggedIn.let { loggedIn ->
@@ -54,9 +53,7 @@ class LoginFragment : Fragment() {
                                     Snackbar.LENGTH_LONG
                                 )
                             }
-
                     }
-
                 }
             }
         }
@@ -65,7 +62,6 @@ class LoginFragment : Fragment() {
     private fun goDoctorsFragment() {
         findNavController().navigate(R.id.action_loginFragment_to_doctorsFragment)
     }
-
     private fun initListeners() {
         binding.bvSignIn.setOnClickListener {
             logIn()
@@ -76,11 +72,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun logIn() {
-
-            val email = binding.etEmail.text.toString()
-            val password  = binding.etPassword.text.toString()
-            val loginModel = LoginModel(email, password)
-            viewModel.handleEvent(LoginEvent.Login(loginModel))
-
+       // FirebaseAuth.getInstance().signOut()
+        val email = binding.etEmail.text.toString()
+        val password = binding.etPassword.text.toString()
+        val loginModel = LoginModel(email, password)
+        viewModel.handleEvent(LoginEvent.Login(loginModel))
     }
 }
