@@ -123,9 +123,16 @@ class ChatFragment : Fragment() {
                         list.forEach { messageInfo ->
                             if (messageInfo.receiverId == selectedUserInfo.id) {
                                 chatAdapter.differ.submitList(list)
+
                             }
                         }
                     }
+                }
+                state.isLoading.let { it->
+                    if (it == true){
+                        //
+                    }
+
                 }
             }
         }

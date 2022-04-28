@@ -44,12 +44,9 @@ class DoctorsViewModel @Inject constructor(
 
     private fun fetchPatientMessage(currentUserId: String) {
         viewModelScope.launch {
-            //println("wwwqqqqqwwwww")
             fetchPatientMessageUseCase.invoke(currentUserId).collect{ resultState->
-               // println("ssss")
                 when(resultState){
                     is Resource.Success->{
-                       // println("wwwwwwww")
                         uiState.update { state->
                             state.copy(patientMessage = resultState.data)
                         }

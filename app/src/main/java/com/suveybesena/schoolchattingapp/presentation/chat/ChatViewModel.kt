@@ -44,6 +44,12 @@ class ChatViewModel @Inject constructor(
                         uiState.update { state ->
                             state.copy(messageList = resultState.data as List<FetchedMessageModel>)
                         }
+
+                    }
+                    is Resource.Loading->{
+                        uiState.update { state->
+                            state.copy(isLoading = true)
+                        }
                     }
                 }
             }

@@ -45,6 +45,11 @@ class DoctorRegisterViewModel @Inject constructor(
 
                         }
                     }
+                    is Resource.Loading->{
+                        uiState.update { state->
+                            state.copy(isLoading = true)
+                        }
+                    }
                 }
             }
         }

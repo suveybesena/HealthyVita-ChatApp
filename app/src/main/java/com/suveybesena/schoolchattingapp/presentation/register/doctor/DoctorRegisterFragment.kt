@@ -68,12 +68,19 @@ class DoctorRegisterFragment : Fragment() {
                     }
                 }
                 state.error.let { error ->
-                    // Snackbar.make(requireView(), "giriş yapılamadı", Snackbar.LENGTH_LONG).show()
+                    if (error != null) {
+                        Snackbar.make(requireView(), error, Snackbar.LENGTH_LONG).show()
+                    }
+                }
+                state.isLoading.let { it ->
+                    if (it == true) {
+                        binding?.pgBar?.visibility = View.VISIBLE
+                    } else {
+                        binding?.pgBar?.visibility = View.GONE
+                    }
                 }
             }
         }
-
-
     }
 
     private fun initListeners() {
