@@ -27,6 +27,7 @@ class FetchMessagesUseCase @Inject constructor(val repository: Repository) {
             emit(Resource.Success(messageList))
         } catch (e: Exception) {
             emit(Resource.Error(e.localizedMessage))
+            println( "heyyy ${e.localizedMessage}")
         }
     }.flowOn(Dispatchers.IO)
 
