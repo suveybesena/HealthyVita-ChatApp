@@ -12,10 +12,10 @@
         android:id="@+id/local_video_view_container"
         android:layout_width="151dp"
         android:layout_height="243dp"
+        android:elevation="1dp"
         android:layout_marginTop="16dp"
-        android:elevation="10dp"
         android:layout_marginEnd="16dp"
-        android:background="#9A9A9A"
+        android:background="#7C7C7C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
