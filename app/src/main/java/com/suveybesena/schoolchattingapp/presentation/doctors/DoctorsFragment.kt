@@ -88,13 +88,13 @@ class DoctorsFragment : Fragment() {
                             viewModel._uiState.collect{state->
                                 state.patientMessage.let { list->
                                     patientsAdapter.differ.submitList(list)
-                                   println(list)
+
                                 }
                             }
                         }
 
                     } else {
-                        binding.tvConversation.text = "Select the doctor you want to see."
+                        binding.tvConversation.text = "Here you can choose the doctor you want to talk to."
                         setupDoctorRecyclerView()
                         viewModel.handleEvent(DoctorsFeedEvent.FetchDoctorsData)
                         lifecycleScope.launch {

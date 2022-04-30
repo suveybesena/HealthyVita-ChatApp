@@ -122,7 +122,7 @@ class DoctorRegisterFragment : Fragment() {
                     )
 
                 } else {
-                    Snackbar.make(requireView(), "Şifreleriniz eşleşmiyor.", Snackbar.LENGTH_LONG)
+                    Snackbar.make(requireView(), "Your passwords do not match.", Snackbar.LENGTH_LONG)
                         .show()
                 }
             }
