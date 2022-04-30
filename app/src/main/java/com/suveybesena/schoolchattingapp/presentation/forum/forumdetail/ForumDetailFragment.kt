@@ -53,7 +53,7 @@ class ForumDetailFragment : Fragment() {
         val answer = binding.etAnswer.text.toString()
         val messageId = forumInfo.messageId
         val forumAnswer = ForumDetailModel(messageId, answer)
-        viewModel.handleEvent(ForumDetailEvent.AddForumMessageUseCase(forumAnswer))
+        viewModel.handleEvent(ForumDetailEvent.AddForumMessage(forumAnswer))
     }
 
     private fun observeData() {
@@ -64,7 +64,7 @@ class ForumDetailFragment : Fragment() {
             ivForumUser.downloadImage(forumInfo.userImage)
         }
 
-        viewModel.handleEvent(ForumDetailEvent.FetchForumMessageUseCase(forumInfo.messageId))
+        viewModel.handleEvent(ForumDetailEvent.FetchForumMessage(forumInfo.messageId))
         lifecycleScope.launch {
             viewModel._uiState.collect{state->
                 state.answerList.let { answer->

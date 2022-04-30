@@ -17,8 +17,8 @@ class FetchForumAnswersUseCase @Inject constructor(var repository: Repository) {
             val answerList = ArrayList<ForumDetailModel>()
             repository.fetchForumAnswersModel(messageId).forEach { document ->
                 val message = document.get("answers") as String
-                val time = document.get("time") as String
-                val answer = ForumDetailModel(message, time)
+                val time = document.get("time") as Long
+                val answer = ForumDetailModel("", message)
                 answerList.add(answer)
             }
             emit(Resource.Success(answerList))

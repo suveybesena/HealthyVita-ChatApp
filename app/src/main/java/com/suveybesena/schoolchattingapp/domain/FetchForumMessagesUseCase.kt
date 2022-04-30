@@ -28,6 +28,7 @@ class FetchForumMessagesUseCase @Inject constructor(val repository: Repository) 
             }
         } catch (e: Exception) {
             emit(Resource.Error(e.localizedMessage))
+            println(e.localizedMessage)
         }
     }.flowOn(Dispatchers.IO)
 }

@@ -21,7 +21,7 @@
             app:layout_constraintEnd_toStartOf="@+id/tvDoctorName"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></de.hdodenhof.circleimageview.CircleImageView>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -31,6 +31,7 @@
             android:layout_marginStart="128dp"
             android:text="TeacherName"
             android:textSize="15sp"
+            android:textColor="#192F42"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -42,6 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="FieldName"
+            android:textStyle="bold"
+            android:textColor="#192F42"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
-            android:backgroundTint="#334453"
+            android:backgroundTint="#FFFFFF"
             android:src="@drawable/ic_qa"
             app:fabSize="mini"
             app:layout_constraintBottom_toBottomOf="parent"

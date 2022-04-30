@@ -14,9 +14,10 @@
 
         <TextView
             android:id="@+id/tvConversation"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textColor="#192F42"
             android:text="@string/startConversation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +29,7 @@
             android:layout_width="123dp"
             android:layout_height="129dp"
             android:src="@drawable/welcomedoctor"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

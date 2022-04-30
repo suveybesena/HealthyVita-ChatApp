@@ -48,7 +48,7 @@ class LoginFragment : Fragment() {
                             } else {
                                 Snackbar.make(
                                     requireView(),
-                                    "Email ve şifre giriniz.",
+                                    "Enter your email and password.",
                                     Snackbar.LENGTH_LONG
                                 )
                             }

@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         this.supportActionBar?.hide()
 
+
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController: NavController = navHostFragment.navController

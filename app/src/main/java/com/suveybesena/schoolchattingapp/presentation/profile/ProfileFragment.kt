@@ -49,8 +49,7 @@ class ProfileFragment : Fragment() {
 
     private fun initListeners() {
         binding.bvSignOut.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
+            showDialog()
         }
         val workCondition = Constraints.Builder()
             .setRequiredNetworkType(NetworkType.CONNECTED)
@@ -68,6 +67,11 @@ class ProfileFragment : Fragment() {
                 cancelReminder(request)
             }
         }
+    }
+
+    private fun showDialog() {
+        val dialog = CustomDialogFragment()
+        dialog.show(childFragmentManager, "customDialog")
     }
 
 

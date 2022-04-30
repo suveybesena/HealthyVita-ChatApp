@@ -25,10 +25,10 @@ class ForumDetailViewModel @Inject constructor(
 
     fun handleEvent ( event : ForumDetailEvent){
         when(event){
-            is ForumDetailEvent.AddForumMessageUseCase->{
+            is ForumDetailEvent.AddForumMessage->{
                 addForumAnswerToFirebase(event.answers)
             }
-            is ForumDetailEvent.FetchForumMessageUseCase->{
+            is ForumDetailEvent.FetchForumMessage->{
                 fetchForumAnswers(event.messageId)
             }
         }

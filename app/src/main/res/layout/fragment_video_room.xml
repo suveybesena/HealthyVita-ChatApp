@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
-        android:hint="Enter a room name..."
+        android:hint="@string/enter_a_room_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:text="Audio"
+            android:text="@string/audio"
             android:textSize="24sp" />
 
         <RadioButton
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="36dp"
-            android:text="Broadcast"
+            android:text="@string/broadcast"
             android:textSize="24sp"/>
 
 
@@ -64,7 +64,7 @@
         android:id="@+id/bvJoinCall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Join Call"
+        android:text="@string/join_call"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"

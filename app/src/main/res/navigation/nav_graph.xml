@@ -137,5 +137,13 @@
             android:id="@+id/action_videoCallFragment_to_videoRoomFragment"
             app:destination="@id/videoRoomFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/customDialogFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.profile.CustomDialogFragment"
+        android:label="CustomDialogFragment" >
+        <action
+            android:id="@+id/action_customDialogFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 
 </navigation>

@@ -1,22 +1,42 @@
 <resources>
     <string name="app_name">HealthyVita</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu">Menu</string>
     <string name="profile">Profile</string>
     <string name="messages">Messages</string>
-    <string name="field">Alanınız</string>
+    <string name="field">Field</string>
     <string name="lorem">Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500\'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış,</string>
     <string name="forum">Forum</string>
     <string name="attachedImage">Görsel Eklendi</string>
-    <string name="startConversation">Select the doctor you want to see.</string>
+    <string name="startConversation">Here you can choose the doctor you want to talk to.</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in">Already have an account? Sign in.</string>
+    <string name="sign_in_button">Sign In</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">Don\'t have an account? Sign up.</string>
+    <string name="email">Email</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="message">Message...</string>
+    <string name="new_forum_message">New forum message...</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="reminder">Daily Reminder</string>
+    <string name="enter_a_room_name">Enter a room name...</string>
+    <string name="audio">Audio</string>
+    <string name="broadcast">Broadcast</string>
+    <string name="join_call">Join Call</string>
+    <string name="want_to_sign_out">Do you want to sign out?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
 
 
     <string-array name="Fields">
-        <item>Dahiliye</item>
-        <item>Cildiye</item>
-        <item>Beslenme ve Diyetetik</item>
-        <item>Çocuk Sağlığı ve Hastalıkları</item>
-        <item>Gastroenteroloji</item>
+        <item>Gastroenterology</item>
+        <item>Orthopedics </item>
+        <item>Dermatology</item>
+        <item>Psychiatry</item>
+        <item>Family and General Practice</item>
     </string-array>
 </resources>

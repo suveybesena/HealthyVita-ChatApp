@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.suveybesena.schoolchattingapp.common.downloadImage
+import com.suveybesena.schoolchattingapp.databinding.ItemAnswerBinding
 import com.suveybesena.schoolchattingapp.databinding.ItemForumBinding
 
 class ForumAnswersAdapter : RecyclerView.Adapter<ForumAnswersAdapter.AnswersVH>() {
-    class AnswersVH(val binding : ItemForumBinding) : RecyclerView.ViewHolder(binding.root) {
+    class AnswersVH(val binding : ItemAnswerBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
     private val differCallBack = object : DiffUtil.ItemCallback<ForumDetailModel>() {
@@ -30,7 +31,7 @@ class ForumAnswersAdapter : RecyclerView.Adapter<ForumAnswersAdapter.AnswersVH>(
     val differ = AsyncListDiffer(this, differCallBack)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForumAnswersAdapter.AnswersVH {
-        val binding = ItemForumBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemAnswerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AnswersVH(binding)
     }
 
