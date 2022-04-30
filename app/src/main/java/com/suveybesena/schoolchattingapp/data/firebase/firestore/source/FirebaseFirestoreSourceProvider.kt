@@ -177,7 +177,9 @@ class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFi
 
     override suspend fun fetchForumAnswers(messageId: String): List<DocumentSnapshot> {
         return try {
-            firebaseFirestore.collection("ForumAnswers").whereEqualTo("messageId", messageId)
+            firebaseFirestore.collection("ForumAnswers").orderBy(
+                "time",
+                Query.Direction.DESCENDING).whereEqualTo("messageId", messageId)
                 .get().await().documents
         } catch (e: Exception) {
             throw Exception(e.localizedMessage)
