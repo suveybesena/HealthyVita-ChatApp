@@ -1,4 +1,4 @@
-package com.suveybesena.schoolchattingapp.presentation.forum.forumfeed
+package com.suveybesena.schoolchattingapp.data.firebase.firestore.model
 
 import java.io.Serializable
 

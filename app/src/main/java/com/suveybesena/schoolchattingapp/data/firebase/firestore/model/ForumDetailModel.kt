@@ -1,4 +1,4 @@
-package com.suveybesena.schoolchattingapp.presentation.forum.forumdetail
+package com.suveybesena.schoolchattingapp.data.firebase.firestore.model
 
 data class ForumDetailModel(
     val messageId : String,

@@ -9,12 +9,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
 import com.suveybesena.schoolchattingapp.R
 import com.suveybesena.schoolchattingapp.data.firebase.auth.model.LoginModel
 import com.suveybesena.schoolchattingapp.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -26,7 +24,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View{
         binding = FragmentLoginBinding.inflate(inflater)
         return binding.root
     }
@@ -50,18 +48,16 @@ class LoginFragment : Fragment() {
                                     requireView(),
                                     "Enter your email and password.",
                                     Snackbar.LENGTH_LONG
-                                )
+                                ).show()
                             }
                     }
                 }
-                state.isLoading.let {
-                    it
-                    if (it == true) {
+                state.isLoading.let {loading->
+                    if (loading == true) {
                         binding.pgBar.visibility = View.VISIBLE
                     } else {
                         binding.pgBar.visibility = View.GONE
                     }
-
                 }
                 state.error.let { errorMessage ->
                     if (errorMessage != null) {

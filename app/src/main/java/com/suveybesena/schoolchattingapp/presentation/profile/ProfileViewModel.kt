@@ -19,7 +19,6 @@ class ProfileViewModel @Inject constructor(
     private val uiState = MutableStateFlow(ProfileState())
     val _uiState: StateFlow<ProfileState> = uiState.asStateFlow()
 
-
     fun handleEvent(event: ProfileEvent) {
         when (event) {
             is ProfileEvent.FetchDoctorData -> {
@@ -29,8 +28,6 @@ class ProfileViewModel @Inject constructor(
                 event.currentUserId?.let { fetchStudentData(it) }
             }
         }
-
-
     }
 
     private fun fetchStudentData(currentUserId: String) {
@@ -60,5 +57,4 @@ class ProfileViewModel @Inject constructor(
             }
         }
     }
-
 }

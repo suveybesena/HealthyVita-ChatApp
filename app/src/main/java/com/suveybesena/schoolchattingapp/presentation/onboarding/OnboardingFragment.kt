@@ -1,4 +1,4 @@
-package com.suveybesena.schoolchattingapp.presentation.guidance
+package com.suveybesena.schoolchattingapp.presentation.onboarding
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,22 +8,18 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.suveybesena.schoolchattingapp.R
-import com.suveybesena.schoolchattingapp.databinding.FragmentGuidanceBinding
+import com.suveybesena.schoolchattingapp.databinding.FragmentOnboardingBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class GuidanceFragment : Fragment() {
-    private lateinit var binding: FragmentGuidanceBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+class OnboardingFragment : Fragment() {
+    private lateinit var binding: FragmentOnboardingBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentGuidanceBinding.inflate(inflater)
+    ): View{
+        binding = FragmentOnboardingBinding.inflate(inflater)
         return binding.root
     }
 

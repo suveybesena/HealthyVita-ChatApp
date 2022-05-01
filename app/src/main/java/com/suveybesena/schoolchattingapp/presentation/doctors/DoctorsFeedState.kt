@@ -8,5 +8,5 @@ data class DoctorsFeedState(
     val error: Boolean? = false,
     val doctorInfo: UserModel? = null,
     val patientInfo: UserModel? = null,
-    val patientMessage : List<String>? = null
+    val patientMessage: List<String>? = null
 )

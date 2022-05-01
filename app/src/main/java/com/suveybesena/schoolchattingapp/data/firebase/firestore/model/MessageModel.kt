@@ -1,4 +1,4 @@
-package com.suveybesena.schoolchattingapp.presentation.chat
+package com.suveybesena.schoolchattingapp.data.firebase.firestore.model
 
 import android.net.Uri
 
