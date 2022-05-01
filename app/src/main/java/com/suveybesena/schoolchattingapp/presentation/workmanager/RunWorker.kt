@@ -24,21 +24,8 @@ class RunWorker(
     private fun createNotification() {
 
         val builder: NotificationCompat.Builder
-
-        //Bildirimi kullanıcıya gösterebilmek için NotificationManager nesnesi oluşturuyoruz.
         val notificationManager =
             applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-        // val intent = Intent(applicationContext, MainActivity::class.java)
-//
-        // //Bildirim tıklandıktan sonra nereye yönlendirileceğini belirtiyoruz.
-        // val contentToGo = PendingIntent.getActivity(
-        //     applicationContext,
-        //     1,
-        //     intent,
-        //     PendingIntent.FLAG_UPDATE_CURRENT
-        // )
-
 
         val channelId = "channelId"
         val channelName = "channelName"
@@ -60,8 +47,6 @@ class RunWorker(
             .setContentText("When it comes to movement, no amount is too little. A quick, 15-minute walk around the block can even have a number of surprising health benefits.")
             .setSmallIcon(R.drawable.ic_notifications)
             .setAutoCancel(true)
-        //.setContentIntent(contentToGo)
-
         notificationManager.notify(1, builder.build())
     }
 }

@@ -2,9 +2,8 @@ package com.suveybesena.schoolchattingapp.domain
 
 
 import com.suveybesena.schoolchattingapp.common.Resource
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumDetailModel
 import com.suveybesena.schoolchattingapp.data.repository.Repository
-import com.suveybesena.schoolchattingapp.presentation.forum.forumdetail.ForumAnswersModel
-import com.suveybesena.schoolchattingapp.presentation.forum.forumdetail.ForumDetailModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -21,5 +20,4 @@ class AddForumAnswerUseCase @Inject constructor(val repository: Repository) {
             emit(Resource.Error(e.localizedMessage))
         }
     }.flowOn(Dispatchers.IO)
-
 }

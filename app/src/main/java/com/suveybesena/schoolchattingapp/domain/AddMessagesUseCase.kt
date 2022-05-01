@@ -1,19 +1,22 @@
 package com.suveybesena.schoolchattingapp.domain
 
 import com.suveybesena.schoolchattingapp.common.Resource
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.MessageModel
 import com.suveybesena.schoolchattingapp.data.repository.Repository
-import com.suveybesena.schoolchattingapp.presentation.chat.MessageModel
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class AddMessagesUseCase @Inject constructor(var repository: Repository) {
+
     suspend operator fun invoke(messageModel: MessageModel) = flow {
         emit(Resource.Loading)
         try {
             if (messageModel.imageUrl != null) {
-                withContext(NonCancellable){
+                withContext(NonCancellable) {
                     repository.saveMediaToStorageForMessages(
                         messageModel.imageUrl!!,
                         messageModel.senderId

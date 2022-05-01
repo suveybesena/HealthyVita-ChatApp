@@ -2,7 +2,7 @@ package com.suveybesena.schoolchattingapp.domain
 
 import com.suveybesena.schoolchattingapp.common.Resource
 import com.suveybesena.schoolchattingapp.data.repository.Repository
-import com.suveybesena.schoolchattingapp.presentation.forum.forumfeed.ForumModel
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn

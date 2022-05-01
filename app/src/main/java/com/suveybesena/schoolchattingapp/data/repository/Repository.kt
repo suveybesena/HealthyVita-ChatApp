@@ -4,12 +4,11 @@ import android.net.Uri
 import com.suveybesena.schoolchattingapp.data.firebase.auth.model.LoginModel
 import com.suveybesena.schoolchattingapp.data.firebase.auth.model.RegisterModel
 import com.suveybesena.schoolchattingapp.data.firebase.auth.source.FirebaseAuthSourceProvider
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumDetailModel
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumModel
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.MessageModel
 import com.suveybesena.schoolchattingapp.data.firebase.firestore.source.FirebaseFirestoreSourceProvider
 import com.suveybesena.schoolchattingapp.data.firebase.storage.source.FirebaseStorageSourceProvider
-import com.suveybesena.schoolchattingapp.presentation.chat.MessageModel
-import com.suveybesena.schoolchattingapp.presentation.forum.forumdetail.ForumAnswersModel
-import com.suveybesena.schoolchattingapp.presentation.forum.forumdetail.ForumDetailModel
-import com.suveybesena.schoolchattingapp.presentation.forum.forumfeed.ForumModel
 import javax.inject.Inject
 
 class Repository @Inject constructor(
@@ -59,7 +58,7 @@ class Repository @Inject constructor(
     suspend fun fetchMessages(currentUserId: String, receiverId: String) =
         firebaseFirestoreSourceProvider.fetchMessagesFromFirebase(currentUserId, receiverId)
 
-    suspend fun saveMessageToFirestore(messageModel: MessageModel, image : String) =
+    suspend fun saveMessageToFirestore(messageModel: MessageModel, image: String) =
         firebaseFirestoreSourceProvider.addMessagesToFirebase(messageModel, image)
 
     suspend fun saveForumMessagesToFirebase(forumModel: ForumModel) {
@@ -78,7 +77,7 @@ class Repository @Inject constructor(
     suspend fun addForumAnswersToFirebase(forumAnswersModel: ForumDetailModel) =
         firebaseFirestoreSourceProvider.addForumAnswers(forumAnswersModel)
 
-    suspend fun fetchForumAnswersModel (messageId : String) =
+    suspend fun fetchForumAnswersModel(messageId: String) =
         firebaseFirestoreSourceProvider.fetchForumAnswers(messageId)
 
     suspend fun fetchPatientMessage(currentUserId: String) =

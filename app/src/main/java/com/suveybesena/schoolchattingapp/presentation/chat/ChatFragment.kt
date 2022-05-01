@@ -21,11 +21,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
-import com.suveybesena.schoolchattingapp.R
 import com.suveybesena.schoolchattingapp.common.downloadImage
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.MessageModel
 import com.suveybesena.schoolchattingapp.databinding.FragmentChatBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -73,12 +72,16 @@ class ChatFragment : Fragment() {
         if (message != "") {
             val messageModel =
                 currentUserId?.let { currentUser ->
-                    pickedImage?.let { uri->
-                        MessageModel(message, currentUser,
-                            uri, date, selectedUserInfo.id)
-                    } ?: run{
-                        MessageModel(message, currentUser,
-                            null, date, selectedUserInfo.id)
+                    pickedImage?.let { uri ->
+                        MessageModel(
+                            message, currentUser,
+                            uri, date, selectedUserInfo.id
+                        )
+                    } ?: run {
+                        MessageModel(
+                            message, currentUser,
+                            null, date, selectedUserInfo.id
+                        )
                     }
                 }
             messageModel?.let { messages ->
@@ -94,14 +97,15 @@ class ChatFragment : Fragment() {
                     viewModel.handleEvent(event)
                 }
         }
-            binding.etMessage.setText("")
-        pickedImage=null
+        binding.etMessage.setText("")
+        pickedImage = null
     }
 
     private fun setupRecyclerView() {
         chatAdapter = ChatAdapter()
         binding.apply {
             rvChat.adapter = chatAdapter
+            rvChat.scrollToPosition(chatAdapter.itemCount - 1)
         }
     }
 
@@ -123,16 +127,18 @@ class ChatFragment : Fragment() {
                         list.forEach { messageInfo ->
                             if (messageInfo.receiverId == selectedUserInfo.id) {
                                 chatAdapter.differ.submitList(list)
+                                chatAdapter.notifyDataSetChanged()
 
                             }
                         }
                     }
                 }
-                state.isLoading.let { it->
-                    if (it == true){
-                        //
+                state.isLoading.let { loading->
+                    if (loading == true) {
+                        binding.pgBar.visibility = View.VISIBLE
+                    } else {
+                        binding.pgBar.visibility = View.INVISIBLE
                     }
-
                 }
             }
         }
@@ -182,12 +188,10 @@ class ChatFragment : Fragment() {
                 if (Build.VERSION.SDK_INT >= 28) {
                     val source = ImageDecoder.createSource(this.contentResolver, pickedImage!!)
                     bitmap = ImageDecoder.decodeBitmap(source)
-                  //  binding?.ivProfile?.setImageBitmap(bitmap)
 
                 } else {
                     bitmap =
                         MediaStore.Images.Media.getBitmap(this.contentResolver, pickedImage)
-                   // binding?.ivProfile?.setImageBitmap(bitmap)
                 }
             }
         }

@@ -4,7 +4,6 @@ package com.suveybesena.schoolchattingapp.domain
 import com.suveybesena.schoolchattingapp.common.Resource
 import com.suveybesena.schoolchattingapp.data.repository.Repository
 import com.suveybesena.schoolchattingapp.presentation.chat.FetchedMessageModel
-import com.suveybesena.schoolchattingapp.presentation.chat.MessageModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -27,9 +26,6 @@ class FetchMessagesUseCase @Inject constructor(val repository: Repository) {
             emit(Resource.Success(messageList))
         } catch (e: Exception) {
             emit(Resource.Error(e.localizedMessage))
-            println( "heyyy ${e.localizedMessage}")
         }
     }.flowOn(Dispatchers.IO)
-
-
 }

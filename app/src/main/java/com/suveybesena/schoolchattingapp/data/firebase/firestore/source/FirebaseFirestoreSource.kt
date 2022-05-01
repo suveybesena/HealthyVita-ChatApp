@@ -2,10 +2,9 @@ package com.suveybesena.schoolchattingapp.data.firebase.firestore.source
 
 
 import com.google.firebase.firestore.DocumentSnapshot
-import com.suveybesena.schoolchattingapp.presentation.chat.MessageModel
-import com.suveybesena.schoolchattingapp.presentation.forum.forumdetail.ForumAnswersModel
-import com.suveybesena.schoolchattingapp.presentation.forum.forumdetail.ForumDetailModel
-import com.suveybesena.schoolchattingapp.presentation.forum.forumfeed.ForumModel
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.MessageModel
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumDetailModel
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumModel
 
 interface FirebaseFirestoreSource {
     suspend fun addDoctorInfoToFirebase(

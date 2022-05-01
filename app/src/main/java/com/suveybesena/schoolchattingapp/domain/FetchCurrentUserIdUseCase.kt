@@ -12,12 +12,8 @@ class FetchCurrentUserIdUseCase @Inject constructor(val repository: Repository) 
         try {
             val currentUserInfo = repository.fetchCurrentPatientInfo(currentUserId)
             emit(Resource.Success(currentUserInfo))
-
         } catch (e: Exception) {
             emit(Resource.Error(e.localizedMessage))
         }
-
     }
-
-
 }

@@ -1,23 +1,24 @@
 package com.suveybesena.schoolchattingapp.presentation.videocall
 
-import androidx.fragment.app.Fragment
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.ImageView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.suveybesena.schoolchattingapp.R
-import com.suveybesena.schoolchattingapp.common.Constants.AGORA_APP_ID
+import com.suveybesena.schoolchattingapp.common.Constants.APP_ID
+import com.suveybesena.schoolchattingapp.common.Constants.PERMISSION_REQ_ID_CAMERA
+import com.suveybesena.schoolchattingapp.common.Constants.PERMISSION_REQ_ID_RECORD_AUDIO
+import com.suveybesena.schoolchattingapp.common.Constants.TOKEN
 import com.suveybesena.schoolchattingapp.databinding.FragmentVideoCallBinding
 import io.agora.rtc.Constants
 import io.agora.rtc.IRtcEngineEventHandler
@@ -27,18 +28,12 @@ import kotlinx.coroutines.launch
 
 
 class VideoCallFragment : Fragment() {
-    private val PERMISSION_REQ_ID_RECORD_AUDIO = 22
-    private val PERMISSION_REQ_ID_CAMERA = PERMISSION_REQ_ID_RECORD_AUDIO + 1
-    private val APP_ID = "f7e1c5ea54594c9388381270e5458d3c"
+
     private var CHANNEL: String? = null
-    private val TOKEN =
-        "006f7e1c5ea54594c9388381270e5458d3cIABFQggO5ALMEgCFa69P134fy64aaxz5GEuttmeB/hm9Bwx+f9gAAAAAEABD/MfDYfduYgEAAQBh925i"
     private var mRtcEngine: RtcEngine? = null
     private lateinit var binding: FragmentVideoCallBinding
     private var userRole = 0
     private val navArgs: VideoCallFragmentArgs by navArgs()
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -71,12 +66,12 @@ class VideoCallFragment : Fragment() {
         binding.bvCloseCall.setOnClickListener {
             onClose()
         }
-        binding.bvMCameraSwitch.setOnClickListener { view ->
-            onSwitchCamera(view)
+        binding.bvMCameraSwitch.setOnClickListener {
+            onSwitchCamera()
         }
     }
 
-    private fun onSwitchCamera(view: View?) {
+    private fun onSwitchCamera() {
         mRtcEngine!!.switchCamera()
     }
 
@@ -148,7 +143,7 @@ class VideoCallFragment : Fragment() {
     }
 
     private fun setupRemoteVideo(uid: Int) {
-        val remoteContainer = binding.remoteVideoViewContainer as FrameLayout
+        val remoteContainer = binding.remoteVideoViewContainer
         if (remoteContainer.childCount >= 1) {
             return
         }

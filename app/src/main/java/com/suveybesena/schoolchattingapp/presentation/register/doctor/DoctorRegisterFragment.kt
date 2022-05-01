@@ -26,7 +26,6 @@ import com.suveybesena.schoolchattingapp.R
 import com.suveybesena.schoolchattingapp.data.firebase.auth.model.RegisterModel
 import com.suveybesena.schoolchattingapp.databinding.FragmentDoctorRegisterBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -122,7 +121,11 @@ class DoctorRegisterFragment : Fragment() {
                     )
 
                 } else {
-                    Snackbar.make(requireView(), "Your passwords do not match.", Snackbar.LENGTH_LONG)
+                    Snackbar.make(
+                        requireView(),
+                        "Your passwords do not match.",
+                        Snackbar.LENGTH_LONG
+                    )
                         .show()
                 }
             }
@@ -157,7 +160,6 @@ class DoctorRegisterFragment : Fragment() {
                 val intent =
                     Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                 startActivityForResult(intent, 2)
-
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -174,7 +176,6 @@ class DoctorRegisterFragment : Fragment() {
                     val source = ImageDecoder.createSource(this.contentResolver, pickedImage!!)
                     bitmap = ImageDecoder.decodeBitmap(source)
                     binding?.ivProfile?.setImageBitmap(bitmap)
-
                 } else {
                     bitmap =
                         MediaStore.Images.Media.getBitmap(this.contentResolver, pickedImage)

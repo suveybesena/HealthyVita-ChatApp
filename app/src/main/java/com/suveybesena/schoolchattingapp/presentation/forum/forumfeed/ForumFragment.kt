@@ -11,11 +11,11 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.suveybesena.schoolchattingapp.R
 import com.suveybesena.schoolchattingapp.common.downloadImage
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumModel
 import com.suveybesena.schoolchattingapp.databinding.FragmentForumBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.*
-import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class ForumFragment : Fragment() {
@@ -28,7 +28,7 @@ class ForumFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentForumBinding.inflate(inflater)
         return binding.root
     }
@@ -58,20 +58,20 @@ class ForumFragment : Fragment() {
                         }
                     } else {
                         viewModel.handleEvent(ForumEvent.GetDoctorData(currentUserId))
-                            state.doctorInfo.let { doctor ->
-                                if (doctor != null) {
-                                    binding.apply {
-                                        tvCurrentUser.text = doctor.name
-                                        userName = doctor.name
-                                        ivUser.downloadImage(doctor.image)
-                                        userImage = doctor.image
-                                    }
+                        state.doctorInfo.let { doctor ->
+                            if (doctor != null) {
+                                binding.apply {
+                                    tvCurrentUser.text = doctor.name
+                                    userName = doctor.name
+                                    ivUser.downloadImage(doctor.image)
+                                    userImage = doctor.image
                                 }
                             }
+                        }
                     }
                 }
-                    state.forumInfo.let { list ->
-                        adapter.differ.submitList(list)
+                state.forumInfo.let { list ->
+                    adapter.differ.submitList(list)
                 }
             }
         }

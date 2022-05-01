@@ -3,10 +3,9 @@ package com.suveybesena.schoolchattingapp.presentation.forum.forumdetail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.suveybesena.schoolchattingapp.common.Resource
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumDetailModel
 import com.suveybesena.schoolchattingapp.domain.AddForumAnswerUseCase
-import com.suveybesena.schoolchattingapp.domain.AddForumMessageUseCase
 import com.suveybesena.schoolchattingapp.domain.FetchForumAnswersUseCase
-import com.suveybesena.schoolchattingapp.presentation.forum.forumfeed.ForumState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

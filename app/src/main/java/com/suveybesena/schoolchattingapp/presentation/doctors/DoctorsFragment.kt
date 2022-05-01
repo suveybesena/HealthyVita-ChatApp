@@ -10,11 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.suveybesena.schoolchattingapp.R
-import com.suveybesena.schoolchattingapp.common.downloadImage
 import com.suveybesena.schoolchattingapp.databinding.FragmentDoctorsBinding
-import com.suveybesena.schoolchattingapp.presentation.profile.ProfileEvent
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -24,10 +21,6 @@ class DoctorsFragment : Fragment() {
     private val viewModel: DoctorsViewModel by viewModels()
     private lateinit var doctorsAdapter: DoctorsAdapter
     private lateinit var patientsAdapter: PatientMessagesAdapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +34,6 @@ class DoctorsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupDoctorRecyclerView()
         observeData()
-        initListeners()
     }
 
     private fun setupDoctorRecyclerView() {
@@ -85,8 +77,8 @@ class DoctorsFragment : Fragment() {
                         setupPatientRecyclerView()
                         viewModel.handleEvent(DoctorsFeedEvent.FetchPatientMessages(currentUserId))
                         lifecycleScope.launch {
-                            viewModel._uiState.collect{state->
-                                state.patientMessage.let { list->
+                            viewModel._uiState.collect { state ->
+                                state.patientMessage.let { list ->
                                     patientsAdapter.differ.submitList(list)
 
                                 }
@@ -94,7 +86,8 @@ class DoctorsFragment : Fragment() {
                         }
 
                     } else {
-                        binding.tvConversation.text = "Here you can choose the doctor you want to talk to."
+                        binding.tvConversation.text =
+                            "Here you can choose the doctor you want to talk to."
                         setupDoctorRecyclerView()
                         viewModel.handleEvent(DoctorsFeedEvent.FetchDoctorsData)
                         lifecycleScope.launch {
@@ -108,8 +101,5 @@ class DoctorsFragment : Fragment() {
                 }
             }
         }
-
-    }
-    private fun initListeners() {
     }
 }

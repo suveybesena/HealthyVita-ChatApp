@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class FetchPatientInfoUseCase @Inject constructor(val repository: Repository) {
-    private lateinit var list: UserModel
 
+    private lateinit var list: UserModel
     suspend fun invoke(currentUserId: String) = flow {
         emit(Resource.Loading)
         try {

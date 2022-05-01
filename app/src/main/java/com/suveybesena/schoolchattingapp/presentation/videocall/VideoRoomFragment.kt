@@ -2,11 +2,11 @@ package com.suveybesena.schoolchattingapp.presentation.videocall
 
 import android.Manifest
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.suveybesena.schoolchattingapp.R
 import com.suveybesena.schoolchattingapp.databinding.FragmentVideoRoomBinding
@@ -14,11 +14,7 @@ import com.suveybesena.schoolchattingapp.databinding.FragmentVideoRoomBinding
 class VideoRoomFragment : Fragment() {
 
     var userRole = 0
-
     private lateinit var binding: FragmentVideoRoomBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +52,6 @@ class VideoRoomFragment : Fragment() {
         val videoModel = VideoCallModel(channelName.text.toString(), userRole)
         bundle.putSerializable("roomInfo", videoModel)
         findNavController().navigate(R.id.action_videoRoomFragment_to_videoCallFragment, bundle)
-
     }
 
     private fun requestPermission() {

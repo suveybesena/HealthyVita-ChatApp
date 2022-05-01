@@ -1,7 +1,6 @@
 package com.suveybesena.schoolchattingapp.presentation.chat
 
 
-
 data class FetchedMessageModel(
     val message: String,
     var senderId: String,

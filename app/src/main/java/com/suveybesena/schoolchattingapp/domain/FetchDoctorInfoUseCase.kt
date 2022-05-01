@@ -11,7 +11,6 @@ import javax.inject.Inject
 class FetchDoctorInfoUseCase @Inject constructor(val repository: Repository) {
 
     private lateinit var list: UserModel
-
     suspend fun invoke(currentUserId: String) = flow {
         emit(Resource.Loading)
         try {

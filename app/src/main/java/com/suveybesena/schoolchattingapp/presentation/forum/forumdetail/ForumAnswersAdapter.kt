@@ -5,13 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.suveybesena.schoolchattingapp.common.downloadImage
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumDetailModel
 import com.suveybesena.schoolchattingapp.databinding.ItemAnswerBinding
-import com.suveybesena.schoolchattingapp.databinding.ItemForumBinding
 
 class ForumAnswersAdapter : RecyclerView.Adapter<ForumAnswersAdapter.AnswersVH>() {
-    class AnswersVH(val binding : ItemAnswerBinding) : RecyclerView.ViewHolder(binding.root) {
-
+    class AnswersVH(val binding: ItemAnswerBinding) : RecyclerView.ViewHolder(binding.root) {
     }
     private val differCallBack = object : DiffUtil.ItemCallback<ForumDetailModel>() {
         override fun areItemsTheSame(
@@ -30,7 +28,10 @@ class ForumAnswersAdapter : RecyclerView.Adapter<ForumAnswersAdapter.AnswersVH>(
     }
     val differ = AsyncListDiffer(this, differCallBack)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForumAnswersAdapter.AnswersVH {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): AnswersVH {
         val binding = ItemAnswerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AnswersVH(binding)
     }
@@ -38,9 +39,10 @@ class ForumAnswersAdapter : RecyclerView.Adapter<ForumAnswersAdapter.AnswersVH>(
     override fun onBindViewHolder(holder: AnswersVH, position: Int) {
         val list = differ.currentList[position]
         holder.binding.apply {
-            tvForum.text =list.message
+            tvForum.text = list.message
         }
     }
+
     override fun getItemCount(): Int {
         return differ.currentList.size
     }

@@ -25,7 +25,6 @@ import com.suveybesena.schoolchattingapp.R
 import com.suveybesena.schoolchattingapp.data.firebase.auth.model.RegisterModel
 import com.suveybesena.schoolchattingapp.databinding.FragmentPatientRegisterBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -114,7 +113,11 @@ class PatientRegisterFragment : Fragment() {
                     viewModel.handleEvent(PatientRegisterEvent.CreateUser(authInfo))
 
                 } else {
-                    Snackbar.make(requireView(), "Your passwords do not match.", Snackbar.LENGTH_LONG)
+                    Snackbar.make(
+                        requireView(),
+                        "Your passwords do not match.",
+                        Snackbar.LENGTH_LONG
+                    )
                         .show()
                 }
             }

@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.suveybesena.schoolchattingapp.common.downloadImage
 import com.suveybesena.schoolchattingapp.databinding.ItemDoctorBinding
 
 class PatientMessagesAdapter (private val questionClick: OnItemQuestionClick) : RecyclerView.Adapter<PatientMessagesAdapter.PatientsVH>() {
@@ -38,7 +37,7 @@ class PatientMessagesAdapter (private val questionClick: OnItemQuestionClick) : 
         override fun onBindViewHolder(holder: PatientsVH, position: Int) {
             val list = differ.currentList[position]
             holder.binding.apply {
-                tvDoctorName.text = "1 yeni mesaj"
+                tvDoctorName.text = "1 new messages"
                 val doctor = DoctorFeedModel(list, "","","")
                 bvQuestion.setOnClickListener {
                     questionClick.onDoctorItemClick(doctor)
@@ -49,5 +48,4 @@ class PatientMessagesAdapter (private val questionClick: OnItemQuestionClick) : 
         override fun getItemCount(): Int {
             return differ.currentList.size
         }
-
 }
