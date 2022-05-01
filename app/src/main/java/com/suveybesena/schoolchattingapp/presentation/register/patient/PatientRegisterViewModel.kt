@@ -8,7 +8,10 @@ import com.suveybesena.schoolchattingapp.data.firebase.auth.model.RegisterModel
 import com.suveybesena.schoolchattingapp.domain.CreatePatientUseCase
 import com.suveybesena.schoolchattingapp.presentation.register.RegisterState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,7 +27,6 @@ class PatientRegisterViewModel @Inject constructor(private val createPatientUseC
             is PatientRegisterEvent.CreateUser -> {
                 createAuth(event.userRegister)
             }
-            else -> {}
         }
     }
 
@@ -42,8 +44,8 @@ class PatientRegisterViewModel @Inject constructor(private val createPatientUseC
                             state.copy(error = resultState.message)
                         }
                     }
-                    is Resource.Loading->{
-                        uiState.update { state->
+                    is Resource.Loading -> {
+                        uiState.update { state ->
                             state.copy(isLoading = true)
                         }
                     }
@@ -51,5 +53,4 @@ class PatientRegisterViewModel @Inject constructor(private val createPatientUseC
             }
         }
     }
-
 }
