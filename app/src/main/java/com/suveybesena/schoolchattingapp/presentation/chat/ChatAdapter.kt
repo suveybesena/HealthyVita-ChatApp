@@ -8,21 +8,26 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.suveybesena.schoolchattingapp.R
+import com.suveybesena.schoolchattingapp.common.Constants.ITEM_RECEIVE
+import com.suveybesena.schoolchattingapp.common.Constants.ITEM_SENT
 import com.suveybesena.schoolchattingapp.common.downloadImage
 import com.suveybesena.schoolchattingapp.databinding.ItemReceiveMessageBinding
 import com.suveybesena.schoolchattingapp.databinding.ItemSentMessageBinding
 
-class ChatAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder?>() {
-
-    val ITEM_SENT = 1
-    val ITEM_RECEIVE = 2
+class ChatAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder?>() {
 
     private val differCallBack = object : DiffUtil.ItemCallback<FetchedMessageModel>() {
-        override fun areItemsTheSame(oldItem: FetchedMessageModel, newItem: FetchedMessageModel): Boolean {
+        override fun areItemsTheSame(
+            oldItem: FetchedMessageModel,
+            newItem: FetchedMessageModel
+        ): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: FetchedMessageModel, newItem: FetchedMessageModel): Boolean {
+        override fun areContentsTheSame(
+            oldItem: FetchedMessageModel,
+            newItem: FetchedMessageModel
+        ): Boolean {
             return oldItem == newItem
         }
     }
@@ -62,7 +67,7 @@ class ChatAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder?>() {
         val chats = differ.currentList[position]
         if (holder.javaClass == SentMessageHolder::class.java) {
             val viewHolder = holder as SentMessageHolder
-            if(chats.imageUrl != ""){
+            if (chats.imageUrl != "") {
                 viewHolder.binding.ivMessage.visibility = View.VISIBLE
                 viewHolder.binding.ivMessage.downloadImage(chats.imageUrl!!)
             } else {
