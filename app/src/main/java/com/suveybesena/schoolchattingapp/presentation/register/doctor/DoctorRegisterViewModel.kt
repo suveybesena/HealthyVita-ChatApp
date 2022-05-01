@@ -7,7 +7,10 @@ import com.suveybesena.schoolchattingapp.data.firebase.auth.model.RegisterModel
 import com.suveybesena.schoolchattingapp.domain.CreateDoctorUseCase
 import com.suveybesena.schoolchattingapp.presentation.register.RegisterState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -29,7 +32,6 @@ class DoctorRegisterViewModel @Inject constructor(
         }
     }
 
-
     private fun createAuth(registerModel: RegisterModel, field: String) {
         viewModelScope.launch {
             createDoctorUseCase.invoke(registerModel, field).collect { resultState ->
@@ -42,11 +44,10 @@ class DoctorRegisterViewModel @Inject constructor(
                     is Resource.Error -> {
                         uiState.update { state ->
                             state.copy(error = resultState.message)
-
                         }
                     }
-                    is Resource.Loading->{
-                        uiState.update { state->
+                    is Resource.Loading -> {
+                        uiState.update { state ->
                             state.copy(isLoading = true)
                         }
                     }
