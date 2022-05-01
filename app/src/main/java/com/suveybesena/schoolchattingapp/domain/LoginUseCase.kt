@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(val repository: Repository) {
+
     suspend fun invoke(signInInfo: LoginModel) = flow {
         emit(Resource.Loading)
         try {
