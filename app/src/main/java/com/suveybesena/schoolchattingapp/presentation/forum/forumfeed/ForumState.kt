@@ -1,5 +1,6 @@
 package com.suveybesena.schoolchattingapp.presentation.forum.forumfeed
 
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumModel
 import com.suveybesena.schoolchattingapp.presentation.forum.UserModel
 
 data class ForumState(

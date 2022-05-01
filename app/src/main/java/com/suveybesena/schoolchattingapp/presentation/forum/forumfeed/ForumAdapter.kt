@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.suveybesena.schoolchattingapp.common.downloadImage
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumModel
 import com.suveybesena.schoolchattingapp.databinding.ItemForumBinding
 
 class ForumAdapter(val itemClick: OnItemForumClick) : RecyclerView.Adapter<ForumAdapter.ForumVH>() {

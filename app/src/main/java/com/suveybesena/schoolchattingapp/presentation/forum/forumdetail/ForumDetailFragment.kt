@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.suveybesena.schoolchattingapp.common.downloadImage
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumDetailModel
 import com.suveybesena.schoolchattingapp.databinding.FragmentForumDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -18,12 +19,12 @@ class ForumDetailFragment : Fragment() {
     private lateinit var binding: FragmentForumDetailBinding
     private val args: ForumDetailFragmentArgs by navArgs()
     private val viewModel: ForumDetailViewModel by viewModels()
-    private lateinit var adapter : ForumAnswersAdapter
+    private lateinit var adapter: ForumAnswersAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View{
+    ): View {
         binding = FragmentForumDetailBinding.inflate(inflater)
         return binding.root
     }
@@ -43,9 +44,9 @@ class ForumDetailFragment : Fragment() {
     }
 
     private fun initListeners() {
-       binding.bvSent.setOnClickListener {
-           addAnswer()
-       }
+        binding.bvSent.setOnClickListener {
+            addAnswer()
+        }
     }
 
     private fun addAnswer() {
@@ -66,8 +67,8 @@ class ForumDetailFragment : Fragment() {
 
         viewModel.handleEvent(ForumDetailEvent.FetchForumMessage(forumInfo.messageId))
         lifecycleScope.launch {
-            viewModel._uiState.collect{state->
-                state.answerList.let { answer->
+            viewModel._uiState.collect { state ->
+                state.answerList.let { answer ->
                     adapter.differ.submitList(answer)
                 }
             }
