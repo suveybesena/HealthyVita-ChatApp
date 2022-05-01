@@ -45,9 +45,9 @@
     </fragment>
     <fragment
         android:id="@+id/guidanceFragment"
-        android:name="com.suveybesena.schoolchattingapp.presentation.guidance.GuidanceFragment"
+        android:name="com.suveybesena.schoolchattingapp.presentation.onboarding.OnboardingFragment"
         android:label="fragment_guidance"
-        tools:layout="@layout/fragment_guidance" >
+        tools:layout="@layout/fragment_onboarding" >
         <action
             android:id="@+id/action_guidanceFragment_to_doctorRegisterFragment"
             app:destination="@id/doctorRegisterFragment" />
@@ -114,7 +114,7 @@
         tools:layout="@layout/fragment_forum_detail" >
         <argument
             android:name="forumInfo"
-            app:argType="com.suveybesena.schoolchattingapp.presentation.forum.forumfeed.ForumModel" />
+            app:argType="com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumModel" />
     </fragment>
     <fragment
         android:id="@+id/videoRoomFragment"
