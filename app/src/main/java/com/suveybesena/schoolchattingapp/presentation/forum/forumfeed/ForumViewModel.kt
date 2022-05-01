@@ -3,12 +3,16 @@ package com.suveybesena.schoolchattingapp.presentation.forum.forumfeed
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.suveybesena.schoolchattingapp.common.Resource
+import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumModel
 import com.suveybesena.schoolchattingapp.domain.AddForumMessageUseCase
 import com.suveybesena.schoolchattingapp.domain.FetchDoctorInfoUseCase
 import com.suveybesena.schoolchattingapp.domain.FetchForumMessagesUseCase
 import com.suveybesena.schoolchattingapp.domain.FetchPatientInfoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -75,7 +79,6 @@ class ForumViewModel @Inject constructor(
                         }
                     }
                 }
-
             }
         }
     }
@@ -90,9 +93,7 @@ class ForumViewModel @Inject constructor(
                         }
                     }
                 }
-
             }
         }
     }
-
 }
