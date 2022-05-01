@@ -7,9 +7,11 @@ import com.suveybesena.schoolchattingapp.domain.FetchDoctorInfoUseCase
 import com.suveybesena.schoolchattingapp.domain.FetchDoctorsUseCase
 import com.suveybesena.schoolchattingapp.domain.FetchMessageFromPatientUseCase
 import com.suveybesena.schoolchattingapp.domain.FetchPatientInfoUseCase
-import com.suveybesena.schoolchattingapp.presentation.profile.ProfileEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,7 +20,7 @@ class DoctorsViewModel @Inject constructor(
     private val fetchDoctorsUseCase: FetchDoctorsUseCase,
     private val fetchDoctorInfoUseCase: FetchDoctorInfoUseCase,
     private val fetchPatientInfoUseCase: FetchPatientInfoUseCase,
-    private val fetchPatientMessageUseCase : FetchMessageFromPatientUseCase
+    private val fetchPatientMessageUseCase: FetchMessageFromPatientUseCase
 ) :
     ViewModel() {
 
@@ -36,7 +38,7 @@ class DoctorsViewModel @Inject constructor(
             is DoctorsFeedEvent.FetchPatientData -> {
                 event.currentUserId?.let { fetchPatientData(it) }
             }
-            is DoctorsFeedEvent.FetchPatientMessages->{
+            is DoctorsFeedEvent.FetchPatientMessages -> {
                 event.currentUserId?.let { fetchPatientMessage(it) }
             }
         }
@@ -44,10 +46,10 @@ class DoctorsViewModel @Inject constructor(
 
     private fun fetchPatientMessage(currentUserId: String) {
         viewModelScope.launch {
-            fetchPatientMessageUseCase.invoke(currentUserId).collect{ resultState->
-                when(resultState){
-                    is Resource.Success->{
-                        uiState.update { state->
+            fetchPatientMessageUseCase.invoke(currentUserId).collect { resultState ->
+                when (resultState) {
+                    is Resource.Success -> {
+                        uiState.update { state ->
                             state.copy(patientMessage = resultState.data)
                         }
                     }
