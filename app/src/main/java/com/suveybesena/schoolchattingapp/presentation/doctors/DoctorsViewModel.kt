@@ -29,8 +29,8 @@ class DoctorsViewModel @Inject constructor(
 
     fun handleEvent(event: DoctorsFeedEvent) {
         when (event) {
-            is DoctorsFeedEvent.FetchDoctorsData -> {
-                fetchDoctorsData()
+            is DoctorsFeedEvent.FetchDoctorsListFromFirebase -> {
+                fetchDoctorsListFromFirebase()
             }
             is DoctorsFeedEvent.FetchDoctorData -> {
                 event.currentUserId?.let { fetchDoctorData(it) }
@@ -51,6 +51,11 @@ class DoctorsViewModel @Inject constructor(
                     is Resource.Success -> {
                         uiState.update { state ->
                             state.copy(patientMessage = resultState.data)
+                        }
+                    }
+                    is Resource.Loading->{
+                        uiState.update { state->
+                            state.copy(isLoading = true)
                         }
                     }
                 }
@@ -86,13 +91,18 @@ class DoctorsViewModel @Inject constructor(
         }
     }
 
-    private fun fetchDoctorsData() {
+    private fun fetchDoctorsListFromFirebase() {
         viewModelScope.launch {
             fetchDoctorsUseCase.invoke().collect { resultState ->
                 when (resultState) {
                     is Resource.Success -> {
                         uiState.update { state ->
                             state.copy(list = resultState.data as List<DoctorFeedModel>)
+                        }
+                    }
+                    is Resource.Loading->{
+                        uiState.update { state->
+                            state.copy(isLoading = true)
                         }
                     }
                 }
