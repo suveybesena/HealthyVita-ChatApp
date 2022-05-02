@@ -73,15 +73,19 @@ class ChatFragment : Fragment() {
             val messageModel =
                 currentUserId?.let { currentUser ->
                     pickedImage?.let { uri ->
-                        MessageModel(
-                            message, currentUser,
-                            uri, date, selectedUserInfo.id
-                        )
+                        selectedUserInfo.id?.let {
+                            MessageModel(
+                                message, currentUser,
+                                uri, date, it
+                            )
+                        }
                     } ?: run {
-                        MessageModel(
-                            message, currentUser,
-                            null, date, selectedUserInfo.id
-                        )
+                        selectedUserInfo.id?.let {
+                            MessageModel(
+                                message, currentUser,
+                                null, date, it
+                            )
+                        }
                     }
                 }
             messageModel?.let { messages ->
@@ -91,7 +95,7 @@ class ChatFragment : Fragment() {
                     viewModel.handleEvent(event)
                 }
             currentUserId?.let { currentUser ->
-                ChatEvent.FetchMessage(currentUser, selectedUserInfo.id)
+                selectedUserInfo.id?.let { ChatEvent.FetchMessage(currentUser, it) }
             }
                 ?.let { event ->
                     viewModel.handleEvent(event)
@@ -113,11 +117,11 @@ class ChatFragment : Fragment() {
         val selectedUserInfo = args.doctorInfo
         val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
         binding.apply {
-            ivProfile.downloadImage(selectedUserInfo.image)
+            selectedUserInfo.image?.let { ivProfile.downloadImage(it) }
             tvDoctorName.text = selectedUserInfo.name
         }
 
-        currentUserId?.let { ChatEvent.FetchMessage(it, selectedUserInfo.id) }
+        currentUserId?.let { selectedUserInfo.id?.let { it1 -> ChatEvent.FetchMessage(it, it1) } }
             ?.let { viewModel.handleEvent(it) }
 
         lifecycleScope.launch {

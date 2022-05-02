@@ -39,7 +39,7 @@ class ForumAdapter(val itemClick: OnItemForumClick) : RecyclerView.Adapter<Forum
         holder.binding.apply {
             tvForumUser.text = list.userName
             tvForum.text = list.forumMessage
-            ivForumUser.downloadImage(list.userImage)
+            list.userImage?.let { ivForumUser.downloadImage(it) }
 
         }
         holder.itemView.setOnClickListener {

@@ -40,7 +40,9 @@ class DoctorsAdapter(private val questionClick: OnItemQuestionClick) :
         val list = differ.currentList[position]
         holder.binding.apply {
             list.image.let { url ->
-                ivDoctor.downloadImage(url)
+                if (url != null) {
+                    ivDoctor.downloadImage(url)
+                }
             }
             tvField.text = list.field
             tvDoctorName.text = list.name

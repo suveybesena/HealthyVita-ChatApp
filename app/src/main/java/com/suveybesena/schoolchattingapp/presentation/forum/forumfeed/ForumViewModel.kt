@@ -40,7 +40,7 @@ class ForumViewModel @Inject constructor(
                 }
             }
             is ForumEvent.GetForumData -> {
-                getForumData()
+                getForumList()
             }
             is ForumEvent.GetDoctorData -> {
                 getDoctorData(event.currentUserId)
@@ -64,7 +64,7 @@ class ForumViewModel @Inject constructor(
         }
     }
 
-    private fun getForumData() {
+    private fun getForumList() {
         viewModelScope.launch {
             fetchForumMessagesUseCase.invoke().collect { resultState ->
                 when (resultState) {
@@ -76,6 +76,11 @@ class ForumViewModel @Inject constructor(
                     is Resource.Error -> {
                         uiState.update { state ->
                             state.copy(error = resultState.message)
+                        }
+                    }
+                    is Resource.Loading -> {
+                        uiState.update { state ->
+                            state.copy(isLoading = true)
                         }
                     }
                 }

@@ -50,7 +50,7 @@ class VideoRoomFragment : Fragment() {
 
         val bundle = Bundle()
         val videoModel = VideoCallModel(channelName.text.toString(), userRole)
-        bundle.putSerializable("roomInfo", videoModel)
+        bundle.putParcelable("roomInfo", videoModel)
         findNavController().navigate(R.id.action_videoRoomFragment_to_videoCallFragment, bundle)
     }
 
