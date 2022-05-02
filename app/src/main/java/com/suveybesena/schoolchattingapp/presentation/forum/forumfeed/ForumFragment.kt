@@ -73,6 +73,13 @@ class ForumFragment : Fragment() {
                 state.forumInfo.let { list ->
                     adapter.differ.submitList(list)
                 }
+                state.isLoading.let { loading->
+                    if (loading == true){
+                        binding.pgBar.visibility = View.VISIBLE
+                    }else   {
+                        binding.pgBar.visibility = View.GONE
+                    }
+                }
             }
         }
     }
@@ -90,7 +97,7 @@ class ForumFragment : Fragment() {
 
     fun goForumDetails(forumModel: ForumModel) {
         val bundle = Bundle()
-        bundle.putSerializable("forumInfo", forumModel)
+        bundle.putParcelable("forumInfo", forumModel)
         findNavController().navigate(R.id.action_forumFragment_to_forumDetailFragment, bundle)
     }
 
