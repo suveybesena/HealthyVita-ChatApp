@@ -58,10 +58,9 @@ class DoctorsFragment : Fragment() {
         }
     }
 
-
     private fun goChatFragment(doctorInfo: DoctorFeedModel) {
         val bundle = Bundle()
-        bundle.putSerializable("doctorInfo", doctorInfo)
+        bundle.putParcelable("doctorInfo", doctorInfo)
         findNavController().navigate(R.id.action_doctorsFragment_to_chatFragment, bundle)
     }
 
@@ -80,7 +79,13 @@ class DoctorsFragment : Fragment() {
                             viewModel._uiState.collect { state ->
                                 state.patientMessage.let { list ->
                                     patientsAdapter.differ.submitList(list)
-
+                                }
+                                state.isLoading.let { loading ->
+                                    if (loading == true) {
+                                        binding.pgBar.visibility = View.VISIBLE
+                                    } else {
+                                        binding.pgBar.visibility = View.GONE
+                                    }
                                 }
                             }
                         }
@@ -89,11 +94,18 @@ class DoctorsFragment : Fragment() {
                         binding.tvConversation.text =
                             "Here you can choose the doctor you want to talk to."
                         setupDoctorRecyclerView()
-                        viewModel.handleEvent(DoctorsFeedEvent.FetchDoctorsData)
+                        viewModel.handleEvent(DoctorsFeedEvent.FetchDoctorsListFromFirebase)
                         lifecycleScope.launch {
                             viewModel._uiState.collect { state ->
                                 state.list.let { list ->
                                     doctorsAdapter.differ.submitList(list)
+                                }
+                                state.isLoading.let { loading ->
+                                    if (loading == true) {
+                                        binding.pgBar.visibility = View.VISIBLE
+                                    } else {
+                                        binding.pgBar.visibility = View.GONE
+                                    }
                                 }
                             }
                         }
