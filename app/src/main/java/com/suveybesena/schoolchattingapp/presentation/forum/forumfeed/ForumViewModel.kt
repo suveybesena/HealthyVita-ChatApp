@@ -34,9 +34,7 @@ class ForumViewModel @Inject constructor(
             }
             is ForumEvent.AddForumDataToFirebase -> {
                 viewModelScope.launch {
-                    event.forumModel?.let {
-                        addForumMessageUseCase.invoke(it).collect { }
-                    }
+                    event.forumModel?.let { addForumMessage(it) }
                 }
             }
             is ForumEvent.GetForumData -> {
@@ -45,6 +43,12 @@ class ForumViewModel @Inject constructor(
             is ForumEvent.GetDoctorData -> {
                 getDoctorData(event.currentUserId)
             }
+        }
+    }
+
+    private fun addForumMessage(forumModel: ForumModel) {
+        viewModelScope.launch {
+            addForumMessageUseCase.invoke(forumModel).collect { }
         }
     }
 
