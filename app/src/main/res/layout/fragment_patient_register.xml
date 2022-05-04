@@ -43,10 +43,7 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivProfile"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="9dp"
+        style="@style/profileImage"
         android:src="@drawable/pofileicon"
         app:layout_constraintBottom_toTopOf="@+id/etEmail"
         app:layout_constraintEnd_toEndOf="parent"

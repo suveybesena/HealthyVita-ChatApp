@@ -23,7 +23,7 @@
             android:id="@+id/tvMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Selam nasılsın?"
+            android:text="@string/hi_how_are_you"
             android:textColor="@color/white"
             android:textSize="15sp" />
     </LinearLayout>

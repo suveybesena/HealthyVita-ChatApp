@@ -30,6 +30,13 @@
     <string name="want_to_sign_out">Do you want to sign out?</string>
     <string name="yes">YES</string>
     <string name="no">NO</string>
+    <string name="doctor">Doctor</string>
+    <string name="healthcare_forum">Healthcare Forum</string>
+    <string name="current_user">Current User</string>
+    <string name="sheldon_cooper">Sheldon Cooper</string>
+    <string name="patient">Patient</string>
+    <string name="sheldoncooper_gmail_com">sheldoncooper@gmail.com</string>
+    <string name="hi_how_are_you">Hi, how are you?</string>
 
 
     <string-array name="Fields">
