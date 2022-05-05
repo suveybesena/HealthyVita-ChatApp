@@ -10,4 +10,16 @@
     <color name="primary">#0288d1</color>
     <color name="pb_light">#5eb8ff</color>
     <color name="pb_dark">#005b9f</color>
+
+    <color name="message_background_color">#F0FBFBFB</color>
+
+    <color name="chatbackgroundcolor">#FF5A6C78</color>
+    <color name="custom_text_color">#192F42</color>
+
+    <color name="message_text_color">#878787</color>
+
+    <color name="end_call_color">#F41010</color>
+
+
+
 </resources>
