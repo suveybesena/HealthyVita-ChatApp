@@ -46,11 +46,9 @@ class VideoCallFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val bundle = navArgs.roomInfo
         userRole = bundle.userRole
         CHANNEL = bundle.channelName
-
 
         if (checkSelfPermission(
                 Manifest.permission.RECORD_AUDIO,
@@ -76,7 +74,7 @@ class VideoCallFragment : Fragment() {
     }
 
     private fun onClose() {
-        onDetach()
+        onDestroy()
         findNavController().navigate(R.id.action_videoCallFragment_to_videoRoomFragment)
         Snackbar.make(requireView(), "video call turned off.", Snackbar.LENGTH_LONG).show()
     }
@@ -117,9 +115,7 @@ class VideoCallFragment : Fragment() {
             }
             mRtcEngine!!.setChannelProfile(Constants.CHANNEL_PROFILE_LIVE_BROADCASTING)
             mRtcEngine!!.setClientRole(userRole)
-
             mRtcEngine!!.enableVideo()
-
             if (userRole == 1) {
                 setupLocaleVideo()
                 val localContainer = binding.localVideoViewContainer
@@ -130,7 +126,6 @@ class VideoCallFragment : Fragment() {
             }
             mRtcEngine!!.joinChannel(TOKEN, CHANNEL, "", 0)
         }
-
     }
 
     private fun setupLocaleVideo() {
@@ -139,7 +134,6 @@ class VideoCallFragment : Fragment() {
         localFrame.setZOrderMediaOverlay(true)
         localContainer.addView(localFrame)
         mRtcEngine!!.setupLocalVideo(VideoCanvas(localFrame, VideoCanvas.RENDER_MODE_FIT, 0))
-
     }
 
     private fun setupRemoteVideo(uid: Int) {
