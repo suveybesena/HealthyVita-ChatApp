@@ -37,13 +37,13 @@ class RunWorker (
         val channelIntroduction = "channelIntroduction"
         val channelPriority = NotificationManager.IMPORTANCE_HIGH
 
-        var channel: NotificationChannel? = notificationManager
+        var notificationChannel: NotificationChannel? = notificationManager
             .getNotificationChannel(channelId)
 
-        if (channel == null) {
-            channel = NotificationChannel(channelId, channelName, channelPriority)
-            channel.description = channelIntroduction
-            notificationManager.createNotificationChannel(channel)
+        if (notificationChannel == null) {
+            notificationChannel = NotificationChannel(channelId, channelName, channelPriority)
+            notificationChannel.description = channelIntroduction
+            notificationManager.createNotificationChannel(notificationChannel)
         }
 
         builder = NotificationCompat.Builder(applicationContext, channelId)

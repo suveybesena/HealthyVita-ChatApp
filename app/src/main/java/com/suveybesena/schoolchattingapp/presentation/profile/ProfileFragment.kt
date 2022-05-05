@@ -99,9 +99,9 @@ class ProfileFragment: Fragment() {
         }
     }
 
-    private fun setWorkReminder(request: WorkRequest) {
+    private fun setWorkReminder(uploadRequest: WorkRequest) {
         WorkManager.getInstance(requireContext())
-            .enqueue(request)
+            .enqueue(uploadRequest)
         Snackbar.make(
             requireView(),
             "Hourly notifications turned on.",
@@ -109,9 +109,9 @@ class ProfileFragment: Fragment() {
         ).show()
     }
 
-    private fun cancelReminder(request: WorkRequest) {
+    private fun cancelReminder(uploadRequest: WorkRequest) {
         WorkManager.getInstance(requireContext())
-            .cancelWorkById(request.id)
+            .cancelWorkById(uploadRequest.id)
         Snackbar.make(
             requireView(),
             "Hourly notifications are turned off.",
