@@ -4,6 +4,7 @@ A doctor-patient forum where you can text, video call, talk about health.
 Technologies I use in this app;
 <ul>
   <li>Firebase</li>
+  <li>Agora</li>
   <li>Dependency Injection(Hilt)</li>
   <li>UıState</li>
   <li>UıEvent</li>
