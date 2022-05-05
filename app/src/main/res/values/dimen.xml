@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bottom_navigation_bar_height">50dp</dimen>
+    <dimen name="chat_message_bar_height">50dp</dimen>
+    <dimen name="chat_message_bar_width">290dp</dimen>
+    <dimen name="bottomnavigationbar">50dp</dimen>
+    <dimen name="dialog_image_width">420dp</dimen>
+    <dimen name="dialog_image_height">470dp</dimen>
+    <dimen name="custom_dialog_text_width">120dp</dimen>
+
+    <dimen name="text_title_size">20sp</dimen>
+    <dimen name="text_subtitle_size">15sp</dimen>
+
+    <dimen name="doctors_image_width">120dp</dimen>
+    <dimen name="doctors_image_height">130dp</dimen>
+
+    <dimen name="forum_image_width">230dp</dimen>
+    <dimen name="forum_image_height">100dp</dimen>
+
+    <dimen name="forum_userimage_width">40dp</dimen>
+    <dimen name="forum_userimage_height">40dp</dimen>
+
+    <dimen name="button_margin_end">25dp</dimen>
+
+    <dimen name="margin_start">30dp</dimen>
+
+
+
+
+
+</resources>
