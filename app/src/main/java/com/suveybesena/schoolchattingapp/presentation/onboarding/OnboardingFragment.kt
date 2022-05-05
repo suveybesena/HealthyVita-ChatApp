@@ -25,7 +25,6 @@ class OnboardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initListeners()
         observeData()
     }
@@ -33,7 +32,6 @@ class OnboardingFragment : Fragment() {
     private fun observeData() {
         if (FirebaseAuth.getInstance().currentUser != null) {
             findNavController().navigate(R.id.action_guidanceFragment_to_doctorsFragment)
-
         }
     }
 

@@ -30,7 +30,6 @@ class DoctorsAdapter(private val questionClick: OnItemQuestionClick) :
 
     val differ = AsyncListDiffer(this, differCallBack)
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoctorsVH {
         val binding = ItemDoctorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DoctorsVH(binding)

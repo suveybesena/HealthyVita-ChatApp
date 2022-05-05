@@ -13,12 +13,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.suveybesena.schoolchattingapp.common.downloadImage
 import com.suveybesena.schoolchattingapp.databinding.FragmentProfileBinding
 import com.suveybesena.schoolchattingapp.presentation.workmanager.RunWorker
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
-class ProfileFragment : Fragment() {
+class ProfileFragment: Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
     private val viewModel: ProfileViewModel by viewModels()
@@ -52,7 +53,6 @@ class ProfileFragment : Fragment() {
             .build()
 
         binding.svReminder.setOnCheckedChangeListener { buttonView, isChecked ->
-
             if (buttonView.isChecked == true) {
                 setWorkReminder(request)
             } else {

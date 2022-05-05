@@ -10,5 +10,4 @@ object Constants {
     const val PERMISSION_REQ_ID_RECORD_AUDIO = 22
     const val PERMISSION_REQ_ID_CAMERA = PERMISSION_REQ_ID_RECORD_AUDIO + 1
 
-
 }

@@ -17,40 +17,40 @@ import javax.inject.Inject
 @HiltViewModel
 class ForumDetailViewModel @Inject constructor(
     private val addForumAnswerUseCase: AddForumAnswerUseCase,
-    private val fetchForumAnswersUseCase: FetchForumAnswersUseCase) : ViewModel() {
+    private val fetchForumAnswersUseCase: FetchForumAnswersUseCase
+) : ViewModel() {
 
     private val uiState = MutableStateFlow(ForumDetailState())
     val _uiState: StateFlow<ForumDetailState> = uiState.asStateFlow()
 
-    fun handleEvent ( event : ForumDetailEvent){
-        when(event){
-            is ForumDetailEvent.AddForumMessage->{
+    fun handleEvent(event: ForumDetailEvent) {
+        when (event) {
+            is ForumDetailEvent.AddForumMessage -> {
                 addForumAnswerToFirebase(event.answers)
             }
-            is ForumDetailEvent.FetchForumMessage->{
+            is ForumDetailEvent.FetchForumMessage -> {
                 fetchForumAnswers(event.messageId)
             }
         }
     }
 
-    private fun fetchForumAnswers(messageId : String) {
+    private fun fetchForumAnswers(messageId: String) {
         viewModelScope.launch {
-            fetchForumAnswersUseCase.invoke(messageId).collect{resultState->
-                when(resultState){
-                    is Resource.Success->{
-                        uiState.update { state->
-                            state.copy( answerList = resultState.data as List<ForumDetailModel>)
+            fetchForumAnswersUseCase.invoke(messageId).collect { resultState ->
+                when (resultState) {
+                    is Resource.Success -> {
+                        uiState.update { state ->
+                            state.copy(answerList = resultState.data as List<ForumDetailModel>)
                         }
                     }
                 }
             }
-
-            }
         }
+    }
 
     private fun addForumAnswerToFirebase(answersModel: ForumDetailModel) {
         viewModelScope.launch {
-            addForumAnswerUseCase.invoke(answersModel).collect{}
+            addForumAnswerUseCase.invoke(answersModel).collect {}
         }
     }
 }

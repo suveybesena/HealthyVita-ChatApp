@@ -21,7 +21,6 @@ class FirebaseStorageSourceProvider @Inject constructor(private val firebaseStor
         }
     }
 
-
     override suspend fun addImageToStorageForPatients(
         profileImage: Uri,
         currentUserId: String

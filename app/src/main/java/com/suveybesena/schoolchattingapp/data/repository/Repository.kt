@@ -30,7 +30,6 @@ class Repository @Inject constructor(
     suspend fun saveMediaToStorageForMessages(profileImage: Uri, currentUserId: String) =
         firebaseStorageProvider.addMessageImageToStorage(profileImage, currentUserId)
 
-
     suspend fun saveInfoToFirestoreForTeachers(
         userName: String, currentUserId: String, imageUrl: String, userMail: String, field: String
     ) =

@@ -6,14 +6,19 @@ import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import androidx.hilt.work.HiltWorker
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.suveybesena.schoolchattingapp.R
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 
-class RunWorker(
+
+class RunWorker (
     appContext: Context,
     workerParams: WorkerParameters
 ) : Worker(appContext, workerParams) {
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun doWork(): Result {
         createNotification()
