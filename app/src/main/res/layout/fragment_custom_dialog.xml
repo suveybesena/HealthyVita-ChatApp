@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="421dp"
-        android:layout_height="466dp"
+        android:id="@+id/ivDialog"
+        android:layout_width="@dimen/dialog_image_width"
+        android:layout_height="@dimen/dialog_image_height"
         android:layout_marginTop="56dp"
         android:background="@drawable/signoutdoc"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,40 +16,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="118dp"
-        android:layout_height="87dp"
+        android:layout_width="@dimen/custom_dialog_text_width"
+        android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:gravity="center"
-        android:textStyle="bold"
         android:text="@string/want_to_sign_out"
-        android:textColor="#192F42"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        android:textColor="@color/custom_text_color"
+        android:textSize="@dimen/text_title_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivDialog"
+        app:layout_constraintStart_toStartOf="@+id/ivDialog"
+        app:layout_constraintTop_toTopOf="@+id/ivDialog"
         app:layout_constraintVertical_bias="0.168" />
 
     <com.google.android.material.button.MaterialButton
 
         android:id="@+id/bvNo"
-        android:layout_width="125dp"
-        android:layout_height="50dp"
+        style="@style/dialog_no_button"
         android:layout_marginEnd="52dp"
         android:layout_marginBottom="60dp"
         android:text="@string/no"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bvYes"
-        android:layout_width="125dp"
-        android:layout_height="50dp"
+        style="@style/dialog_yes_button"
         android:layout_marginStart="64dp"
         android:layout_marginBottom="60dp"
-        android:backgroundTint="@color/white"
         android:text="@string/yes"
-        android:textColor="#192F42"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

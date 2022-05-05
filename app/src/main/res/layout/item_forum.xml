@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sheldon_cooper"
-            android:textColor="#192F42"
+            android:textColor="@color/custom_text_color"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivForumUser"
             android:layout_marginStart="15dp"

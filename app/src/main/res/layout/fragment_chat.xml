@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.chat.ChatFragment"
-    android:background="#FF5A6C78"
+    android:background="@color/chatbackgroundcolor"
     >
 
     <ProgressBar
@@ -23,13 +23,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="70dp"
-        android:background="@drawable/ic_recyclerbg"
         android:layout_marginBottom="70dp"
+        app:layout_constraintTop_toBottomOf="@id/ivProfile"
+        android:background="@drawable/ic_recyclerbg"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivProfile"
@@ -59,43 +58,37 @@
     <EditText
         android:id="@+id/etMessage"
         style="@style/white_background"
-        android:layout_width="287dp"
-        android:layout_height="49dp"
+        android:layout_width="@dimen/chat_message_bar_width"
+        android:layout_height="@dimen/chat_message_bar_height"
         android:hint="@string/message"
         android:paddingLeft="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@id/bvImageSent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvChat"
-        app:layout_constraintVertical_bias="0.666" />
+        app:layout_constraintTop_toBottomOf="@+id/rvChat" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/bvSent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:backgroundTint="@color/white"
         android:layout_marginEnd="16dp"
         android:src="@drawable/ic_sent"
         app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvChat"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/rvChat" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/bvImageSent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="68dp"
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_sentimage"
         app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvChat"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/rvChat"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

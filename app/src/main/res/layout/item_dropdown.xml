@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:text="text"
     android:padding="14dp"
-    android:textSize="16sp"
+    android:textSize="@dimen/text_subtitle_size"
     android:textStyle="bold"
     android:layout_height="wrap_content"/>
 

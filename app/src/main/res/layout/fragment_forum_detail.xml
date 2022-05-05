@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0FBFBFB"
+    android:background="@color/message_background_color"
     android:orientation="vertical"
     tools:context=".presentation.forum.forumdetail.ForumDetailFragment">
 
@@ -14,40 +13,39 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="10dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_receive"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/bg_receive">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            >
+            android:padding="10dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivForumUser"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="@dimen/forum_userimage_width"
+                android:layout_height="@dimen/forum_userimage_height"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/ic_profile" />
+                android:src="@drawable/ic_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvForumUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sheldon_cooper"
-                android:textColor="#192F42"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ivForumUser"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="9dp"
-                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:text="@string/sheldon_cooper"
+                android:textColor="@color/custom_text_color"
+                android:textSize="@dimen/text_subtitle_size"
                 android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/ivForumUser"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="72dp"
                 tools:layout_editor_absoluteY="0dp" />
 
@@ -58,7 +56,7 @@
                 android:layout_marginTop="8dp"
                 android:padding="8dp"
                 android:text="@string/lorem"
-                android:textSize="15sp"
+                android:textSize="@dimen/text_subtitle_size"
                 app:layout_constraintTop_toBottomOf="@id/ivForumUser"
                 tools:layout_editor_absoluteX="4dp">
 
@@ -72,14 +70,14 @@
         android:id="@+id/tvAnswers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Answers"
         android:paddingLeft="20dp"
-        android:textStyle="bold"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:textColor="#192F42"
+        android:text="@string/answers"
+        android:textColor="@color/custom_text_color"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/rvForumDetailAnswers"
-        app:layout_constraintTop_toBottomOf="@id/cardView"/>
+        app:layout_constraintTop_toBottomOf="@id/cardView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvForumDetailAnswers"
@@ -88,13 +86,13 @@
         android:layout_weight="3"
         android:padding="15dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/tvAnswers"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@id/tvAnswers" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
         android:layout_gravity="bottom"
+        android:layout_weight="0"
         android:foregroundGravity="bottom">
 
         <EditText
@@ -105,8 +103,8 @@
             android:foregroundGravity="bottom"
             android:hint="@string/message"
             android:paddingLeft="25dp"
-            android:textColor="#878787"
-            android:textSize="15sp"
+            android:textColor="@color/message_text_color"
+            android:textSize="@dimen/text_subtitle_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -125,7 +123,5 @@
             app:layout_constraintVertical_bias="0.41" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </LinearLayout>

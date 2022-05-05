@@ -17,7 +17,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="#192F42"
+            android:textColor="@color/custom_text_color"
             android:text="@string/startConversation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,8 +26,8 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:layout_width="123dp"
-            android:layout_height="129dp"
+            android:layout_width="@dimen/doctors_image_width"
+            android:layout_height="@dimen/doctors_image_height"
             android:src="@drawable/welcomedoctor"
             android:layout_marginStart="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -54,8 +54,5 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 </LinearLayout>

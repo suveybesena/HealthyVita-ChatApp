@@ -11,8 +11,8 @@
         android:id="@+id/tvLogo"
         android:layout_width="110dp"
         android:layout_height="95dp"
-        android:layout_marginStart="272dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="270dp"
+        android:layout_marginTop="5dp"
         android:src="@drawable/healthyvita"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
