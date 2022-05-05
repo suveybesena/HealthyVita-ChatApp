@@ -76,7 +76,7 @@ class VideoCallFragment : Fragment() {
     private fun onClose() {
         onDestroy()
         findNavController().navigate(R.id.action_videoCallFragment_to_videoRoomFragment)
-        Snackbar.make(requireView(), "video call turned off.", Snackbar.LENGTH_LONG).show()
+        Snackbar.make(requireView(), "Video call turned off.", Snackbar.LENGTH_LONG).show()
     }
 
 

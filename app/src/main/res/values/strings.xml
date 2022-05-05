@@ -39,6 +39,16 @@
     <string name="hi_how_are_you">Hi, how are you?</string>
     <string name="answers">Answers</string>
 
+    <string name="patient_greeting">Here you can choose the doctor you want to talk to.</string>
+    <string name="pending_messages">Your Pending Messages.</string>
+    <string name="enter_mail_pass">Enter your email and password.</string>
+    <string name="notification_on">Hourly notifications turned on.</string>
+    <string name="notification_off">Hourly notifications are turned off.</string>
+    <string name="password_confirm">Your passwords do not match.</string>
+    <string name="video_call_off">Video call turned off.</string>
+
+
+
 
     <string-array name="Fields">
         <item>Gastroenterology</item>

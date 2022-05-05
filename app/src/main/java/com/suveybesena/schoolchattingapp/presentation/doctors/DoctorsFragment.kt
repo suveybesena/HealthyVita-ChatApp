@@ -72,7 +72,7 @@ class DoctorsFragment : Fragment() {
             viewModel._uiState.collect { state ->
                 state.doctorInfo.let { doctor ->
                     if (doctor?.userId != null) {
-                        binding.tvConversation.text = "Your Pending Messages"
+                        binding.tvConversation.setText(R.string.pending_messages)
                         setupPatientRecyclerView()
                         viewModel.handleEvent(DoctorsFeedEvent.FetchPatientMessages(currentUserId))
                         lifecycleScope.launch {
@@ -91,8 +91,7 @@ class DoctorsFragment : Fragment() {
                         }
 
                     } else {
-                        binding.tvConversation.text =
-                            "Here you can choose the doctor you want to talk to."
+                        binding.tvConversation.setText(R.string.patient_greeting)
                         setupDoctorRecyclerView()
                         viewModel.handleEvent(DoctorsFeedEvent.FetchDoctorsListFromFirebase)
                         lifecycleScope.launch {
