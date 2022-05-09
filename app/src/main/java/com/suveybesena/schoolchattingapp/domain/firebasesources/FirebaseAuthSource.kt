@@ -1,4 +1,4 @@
-package com.suveybesena.schoolchattingapp.data.firebase.auth.source
+package com.suveybesena.schoolchattingapp.domain.firebasesources
 
 import com.google.firebase.auth.FirebaseUser
 import com.suveybesena.schoolchattingapp.data.firebase.auth.model.LoginModel
