@@ -1,8 +1,9 @@
-package com.suveybesena.schoolchattingapp.domain
+package com.suveybesena.schoolchattingapp.domain.usecases
 
 import com.suveybesena.schoolchattingapp.common.Resource
 import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.MessageModel
-import com.suveybesena.schoolchattingapp.data.repository.Repository
+import com.suveybesena.schoolchattingapp.domain.repositories.FirebaseFirestoreRepository
+import com.suveybesena.schoolchattingapp.domain.repositories.FirebaseStorageRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.flow.flow
@@ -10,22 +11,22 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class AddMessagesUseCase @Inject constructor(var repository: Repository) {
+class AddMessagesUseCase @Inject constructor(private var firebaseFirestoreRepository: FirebaseFirestoreRepository, var firebaseStorageRepository: FirebaseStorageRepository) {
 
     suspend operator fun invoke(messageModel: MessageModel) = flow {
         emit(Resource.Loading)
         try {
             if (messageModel.imageUrl != null) {
                 withContext(NonCancellable) {
-                    repository.saveMediaToStorageForMessages(
+                    firebaseStorageRepository.saveMediaToStorageForMessages(
                         messageModel.imageUrl!!,
                         messageModel.senderId
                     ).let { image ->
-                        repository.saveMessageToFirestore(messageModel, image)
+                        firebaseFirestoreRepository.saveMessageToFirestore(messageModel, image)
                     }
                 }
             } else {
-                repository.saveMessageToFirestore(messageModel, "")
+                firebaseFirestoreRepository.saveMessageToFirestore(messageModel, "")
             }
             emit(Resource.Success(null))
         } catch (e: Exception) {

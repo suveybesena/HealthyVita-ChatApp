@@ -1,20 +1,20 @@
-package com.suveybesena.schoolchattingapp.domain
+package com.suveybesena.schoolchattingapp.domain.usecases
 
 import com.suveybesena.schoolchattingapp.common.Resource
-import com.suveybesena.schoolchattingapp.data.repository.Repository
+import com.suveybesena.schoolchattingapp.domain.repositories.FirebaseFirestoreRepository
 import com.suveybesena.schoolchattingapp.presentation.doctors.DoctorFeedModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class FetchDoctorsUseCase @Inject constructor(val repository: Repository) {
+class FetchDoctorsUseCase @Inject constructor(private val firebaseFirestoreRepository: FirebaseFirestoreRepository) {
 
     suspend fun invoke() = flow {
         emit(Resource.Loading)
         try {
             val doctorList = ArrayList<DoctorFeedModel>()
-            repository.fetchDoctorData().forEach { document ->
+            firebaseFirestoreRepository.fetchDoctorData().forEach { document ->
                 val doctorName = document.get("userName") as String
                 val doctorImage = document.get("userImage") as String
                 val doctorField = document.get("field") as String
