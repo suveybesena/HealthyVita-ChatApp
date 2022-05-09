@@ -1,4 +1,4 @@
-package com.suveybesena.schoolchattingapp.common
+package com.suveybesena.schoolchattingapp.common.extensions
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide
