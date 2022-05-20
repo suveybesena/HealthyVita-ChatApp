@@ -1,4 +1,4 @@
-package com.suveybesena.schoolchattingapp.data.firebase.firestore.source
+package com.suveybesena.schoolchattingapp.domain.firebasesources
 
 
 import com.google.firebase.firestore.DocumentSnapshot
@@ -6,7 +6,7 @@ import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.MessageMo
 import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumDetailModel
 import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumModel
 
-interface FirebaseFirestoreSource {
+interface FirebaseFirestoreRepository {
     suspend fun addDoctorInfoToFirebase(
         userName: String,
         currentUserId: String,
