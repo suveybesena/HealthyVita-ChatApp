@@ -2,12 +2,13 @@ package com.suveybesena.schoolchattingapp.data.firebase.storage.source
 
 import android.net.Uri
 import com.google.firebase.storage.FirebaseStorage
+import com.suveybesena.schoolchattingapp.domain.firebasesources.FirebaseStorageRepository
 import kotlinx.coroutines.tasks.await
 import java.util.*
 import javax.inject.Inject
 
-class FirebaseStorageSourceProvider @Inject constructor(private val firebaseStorage: FirebaseStorage) :
-    FirebaseStorageSource {
+class FirebaseStorageRepositoryImpl @Inject constructor(private val firebaseStorage: FirebaseStorage) :
+    FirebaseStorageRepository {
     override suspend fun addImageToStorageForDoctors(
         profileImage: Uri,
         currentUserId: String

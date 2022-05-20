@@ -5,11 +5,12 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.suveybesena.schoolchattingapp.data.firebase.auth.model.LoginModel
 import com.suveybesena.schoolchattingapp.data.firebase.auth.model.RegisterModel
+import com.suveybesena.schoolchattingapp.domain.firebasesources.FirebaseAuthRepository
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
-class FirebaseAuthSourceProvider @Inject constructor(val firebaseAuth: FirebaseAuth) :
-    FirebaseAuthSource {
+class FirebaseAuthRepositoryImpl @Inject constructor(private val firebaseAuth: FirebaseAuth) :
+    FirebaseAuthRepository {
     override suspend fun signUpWithEmail(emailAuthModel: RegisterModel): FirebaseUser? {
         return try {
             firebaseAuth.createUserWithEmailAndPassword(

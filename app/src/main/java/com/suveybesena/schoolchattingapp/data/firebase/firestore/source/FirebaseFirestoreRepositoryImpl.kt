@@ -7,12 +7,13 @@ import com.google.firebase.firestore.Query
 import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumDetailModel
 import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumModel
 import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.MessageModel
+import com.suveybesena.schoolchattingapp.domain.firebasesources.FirebaseFirestoreRepository
 import kotlinx.coroutines.tasks.await
 import java.util.*
 import javax.inject.Inject
 
-class FirebaseFirestoreSourceProvider @Inject constructor(private val firebaseFirestore: FirebaseFirestore) :
-    FirebaseFirestoreSource {
+class FirebaseFirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore: FirebaseFirestore) :
+    FirebaseFirestoreRepository {
     override suspend fun addDoctorInfoToFirebase(
         userName: String,
         currentUserId: String,
