@@ -2,19 +2,24 @@ package com.suveybesena.schoolchattingapp.domain.usecases
 
 import com.suveybesena.schoolchattingapp.common.Resource
 import com.suveybesena.schoolchattingapp.data.firebase.firestore.model.ForumModel
-import com.suveybesena.schoolchattingapp.domain.repositories.FirebaseFirestoreRepository
+import com.suveybesena.schoolchattingapp.di.IoDispatcher
+import com.suveybesena.schoolchattingapp.domain.firebasesources.FirebaseFirestoreRepository
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class FetchForumMessagesUseCase @Inject constructor(private val firebaseFirestoreRepository: FirebaseFirestoreRepository) {
+class FetchForumMessagesUseCase @Inject constructor(
+    private val firebaseFirestoreRepository: FirebaseFirestoreRepository,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
+) {
 
     suspend fun invoke() = flow {
         emit(Resource.Loading)
         try {
             val forumList = ArrayList<ForumModel>()
-            firebaseFirestoreRepository.fetchForumMessagesFromFirebase().forEach { document ->
+            firebaseFirestoreRepository.fetchForumMessages().forEach { document ->
                 val forumMessages = document.get("forumMessage") as String
                 val userId = document.get("userId") as String
                 val time = document.get("time") as Long
@@ -30,5 +35,5 @@ class FetchForumMessagesUseCase @Inject constructor(private val firebaseFirestor
             emit(Resource.Error(e.localizedMessage))
             println(e.localizedMessage)
         }
-    }.flowOn(Dispatchers.IO)
+    }.flowOn(ioDispatcher)
 }
